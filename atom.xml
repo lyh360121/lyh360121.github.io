@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hello</title>
+  
+  
+  <link href="https://lyh360121.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://lyh360121.github.io/"/>
+  <updated>2024-10-06T13:37:46.291Z</updated>
+  <id>https://lyh360121.github.io/</id>
+  
+  <author>
+    <name>Yonghui Liu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello!</title>
+    <link href="https://lyh360121.github.io/2024/09/29/hello-world/"/>
+    <id>https://lyh360121.github.io/2024/09/29/hello-world/</id>
+    <published>2024-09-29T08:55:40.261Z</published>
+    <updated>2024-10-06T13:37:46.291Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+</feed>
