@@ -14,15 +14,15 @@ mounts:
   - source: hugo-blox/blox/community
     target: layouts/_partials/blox/community/
     files:
-      - '**.html'
+      - "**.html"
   - source: hugo-blox/blox/all-access
     target: layouts/_partials/blox/
     files:
-      - '**.html'
+      - "**.html"
   - source: hugo-blox/blox
     target: assets/dist/community/blox/
     files:
-      - '**.css'
+      - "**.css"
   - source: layouts
     target: layouts
   - source: assets

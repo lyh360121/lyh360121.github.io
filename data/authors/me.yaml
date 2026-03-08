@@ -108,3 +108,8 @@ awards:
     date: "2022-12-01"
     summary: "Awarded for groundbreaking work on efficient training of large models."
     icon: "hero/trophy"
+ids:
+  scopus: "60021840400"
+  orcid: "0009-0005-0264-6643"
+  google_scholar: "AeqaCTQAAAAJ"
+  research_gate: "Yonghui Liu"

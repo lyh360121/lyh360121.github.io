@@ -6,7 +6,7 @@ authors:
 author_notes:
   - ""
 date: 2025-12-23
-publishDate: 2026-03-08T06:40:20.973Z
+publishDate: "2026-03-08T06:40:20.973Z"
 publication_types:
   - article-journal
 publication: Knowledge-Based Systems
@@ -22,13 +22,13 @@ tags:
   - Goal-conditioned prediction
   - Intelligent transportation systems
   - Model interpretability
-featured: false
+featured: true
 hugoblox:
   ids:
     doi: 10.1016/j.knosys.2025.115204
 links:
   - type: source
-    url: https://dx.doi.org/10.1016/j.knosys.2025.115204
+    url: "https://dx.doi.org/10.1016/j.knosys.2025.115204"
 image:
   caption: ""
   focal_point: ""
