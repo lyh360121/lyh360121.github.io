@@ -1,5 +1,5 @@
 ---
-title: 2025-liu-SDA
+title: Sequential decomposition and attribution for trajectory forecasting
 authors:
   - me
   - Inhi Kim
