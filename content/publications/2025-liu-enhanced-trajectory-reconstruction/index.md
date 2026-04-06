@@ -6,7 +6,7 @@ authors:
   - Yonghui Liu
   - Qian Li
   - Inhi Kim
-date: "2025-12-01T00:00:00Z"
+date: 2025-12-01T00:00:00Z
 hugoblox:
   ids:
     doi: 10.1016/j.commtr.2025.100200
@@ -45,7 +45,7 @@ abstract: >
   model.
 links:
   - type: source
-    url: "http://dx.doi.org/10.1016/j.commtr.2025.100200"
+    url: http://dx.doi.org/10.1016/j.commtr.2025.100200
 featured: true
 tags:
   - Trajectory reconstruction
@@ -53,6 +53,7 @@ tags:
   - Chunked processing
   - Heuristic-informed
   - Parallel computing
+summary: ""
 
 ---
 
