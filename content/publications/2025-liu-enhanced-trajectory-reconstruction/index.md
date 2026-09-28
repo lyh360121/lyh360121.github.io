@@ -3,7 +3,7 @@ title: |
   Enhanced trajectory reconstruction from sparse and noisy GPS data: A
     progressive chunked transformer approach
 authors:
-  - Yonghui Liu
+  - me
   - Qian Li
   - Inhi Kim
 date: 2025-12-01T00:00:00Z
@@ -53,7 +53,9 @@ tags:
   - Chunked processing
   - Heuristic-informed
   - Parallel computing
-summary: ""
+summary: ProChunkFormer, a progressive chunked transformer that reconstructs
+  trajectories from sparse, noisy GPS data with better accuracy and
+  efficiency than autoregressive baselines.
 
 ---
 

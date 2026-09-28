@@ -3,8 +3,6 @@ title: Sequential decomposition and attribution for trajectory forecasting
 authors:
   - me
   - Inhi Kim
-author_notes:
-  - ""
 date: 2025-12-23
 publishDate: "2026-03-08T06:40:20.973Z"
 publication_types:
@@ -12,8 +10,10 @@ publication_types:
 publication: Knowledge-Based Systems
 publication_short: KBS
 abstract: |
-  Trajectory forecasting is fundamental to intelligent mobility systems. A prevailing assumption is that longer historical inputs consistently help, which has motivated the design of models with extended observation windows. Yet empirical results often show diminishing returns, higher computational cost, and increased sensitivity to noise. Despite extensive architectural innovation, there is still no unified framework for systematically attributing forecasting performance to different temporal inputs. Rather than introducing a new forecasting model, we present the Sequential Decomposition and Attribution (SDA) protocol, a model-agnostic evaluation paradigm that decomposes inputs into Past ( ), Current ( ), and Prior ( , i.e., destination or goal when available) and quantifies their standalone utility, marginal contributions, and interactions through controlled input gating. Instantiated on trajectory forecasting on two real-world datasets (Porto taxi and ETH pedestrian) with two representative backbones (LSTM and Transformer), SDA shows that accuracy gains from history saturate with short sequences, the most recent state alone is highly informative at short horizons, and reliable priors yield substantial improvements with greater value at longer horizons. Interaction analyses further reveal conditional complementarity among sources. These findings highlight the importance of input-aware designs that prioritize efficient use of the latest state and goal-conditioning over indiscriminate history accumulation. While demonstrated on trajectories, SDA offers a general lens for sequential information attribution.
-summary: One-line takeaway for readers skimming listings.
+  Trajectory forecasting is fundamental to intelligent mobility systems. A prevailing assumption is that longer historical inputs consistently help, which has motivated the design of models with extended observation windows. Yet empirical results often show diminishing returns, higher computational cost, and increased sensitivity to noise. Despite extensive architectural innovation, there is still no unified framework for systematically attributing forecasting performance to different temporal inputs. Rather than introducing a new forecasting model, we present the Sequential Decomposition and Attribution (SDA) protocol, a model-agnostic evaluation paradigm that decomposes inputs into Past (historical trajectory), Current (present state), and Prior (i.e., destination or goal, when available) and quantifies their standalone utility, marginal contributions, and interactions through controlled input gating. Instantiated on trajectory forecasting on two real-world datasets (Porto taxi and ETH pedestrian) with two representative backbones (LSTM and Transformer), SDA shows that accuracy gains from history saturate with short sequences, the most recent state alone is highly informative at short horizons, and reliable priors yield substantial improvements with greater value at longer horizons. Interaction analyses further reveal conditional complementarity among sources. These findings highlight the importance of input-aware designs that prioritize efficient use of the latest state and goal-conditioning over indiscriminate history accumulation. While demonstrated on trajectories, SDA offers a general lens for sequential information attribution.
+summary: A model-agnostic protocol that decomposes trajectory forecasting
+  inputs into Past, Current, and Prior to quantify each one's standalone and
+  marginal contribution.
 tags:
   - Trajectory forecasting
   - Sequential decomposition
@@ -38,5 +38,3 @@ slides: ""
 draft: false
 
 ---
-
-<!-- Add the paper text or supplementary notes. Markdown, math, and code are supported. -->

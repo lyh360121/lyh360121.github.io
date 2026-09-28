@@ -102,12 +102,6 @@ languages:
   - name: "Korean"
     level: 1
     label: "Basic"
-awards:
-  - title: "Best Paper Award"
-    awarder: "NeurIPS"
-    date: "2022-12-01"
-    summary: "Awarded for groundbreaking work on efficient training of large models."
-    icon: "hero/trophy"
 ids:
   scopus: "60021840400"
   orcid: "0009-0005-0264-6643"
