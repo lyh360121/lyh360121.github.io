@@ -27,7 +27,15 @@ links:
     url: http://dx.doi.org/10.1109/ITSC60802.2025.11423624
   - type: pdf
     url: paper.pdf
-featured: false
+featured: true
+image:
+  caption: "Framework overview: semantic features (LLM-generated pseudo-labels
+    plus source-taxonomy label embeddings) and structural features
+    (DeepWalk embeddings from the road network) are concatenated and
+    passed through a two-stage pretrain-then-fine-tune procedure with
+    semantic masking."
+  focal_point: ""
+  preview_only: false
 ---
 
 Transportation datasets rarely speak the same language. A city's OpenStreetMap extract might tag a road as "primary" or "secondary," while a government inventory such as the U.S. Federal Highway Administration's (FHWA) Functional Classification sorts the same roads into categories like "Interstate," "Principal Arterial," or "Minor Collector." Point-of-interest catalogs and land-use datasets run into the same mismatch in their own vocabularies. Merging sources like these for infrastructure planning or traffic analysis means mapping one taxonomy onto another, and today that mostly still means manually built lookup tables or brittle keyword-matching rules — approaches that don't scale and break down as soon as a new dataset phrases things slightly differently.
@@ -38,8 +46,6 @@ This paper proposes a framework that automates that mapping using two complement
 - **Structural embeddings.** In parallel, a DeepWalk embedding is trained directly on the road network graph, so every road segment also carries information about where it sits and how it connects in the network, independent of what it happens to be called.
 
 The two views — an entity's LLM-derived semantic signal (pseudo-label plus its encoded source-taxonomy label) and its structural embedding — are concatenated into one multi-view input and fed to a two-layer classifier.
-
-![Architecture diagram showing the semantic view (LLMs and source-taxonomy label producing pseudo-labels and label embeddings), the structural view (DeepWalk embeddings from the road network), their concatenation, and the two-stage pretraining/fine-tuning training procedure with semantic masking.](fig-architecture.png "Framework overview: semantic features (LLM-generated pseudo-labels plus source-taxonomy label embeddings) and structural features (DeepWalk embeddings from the road network) are concatenated and passed through a two-stage pretrain-then-fine-tune procedure with semantic masking.")
 
 Training happens in two stages. The model first pretrains on the LLM-generated pseudo-labels, using a technique the authors call **semantic masking**: in every batch, a random subset of nodes has its semantic input zeroed out, which forces the model to also lean on the structural embedding rather than just memorizing the pseudo-label mapping. It's then fine-tuned on a small set of human-verified labels to correct whatever noise the pseudo-labels introduced. Tested on mapping real OSM 'highway' tags to FHWA functional classes, the fine-tuned model reached **79.1% accuracy and 81.0% macro-F1**, well ahead of plain string-matching (29.5%/20.9%) and of using the LLM's pseudo-labels directly with no learned model at all (54.3%/51.8%). An ablation confirmed both views pull their weight: a model trained on structural embeddings alone already reached 68.5% accuracy, versus 54.8% for a model with no structural information at all — a sizeable share of the framework's benefit comes from network topology, not just the LLM's semantic guesses.
 

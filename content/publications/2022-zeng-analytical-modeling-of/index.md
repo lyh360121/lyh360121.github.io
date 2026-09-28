@@ -16,12 +16,14 @@ publication_types:
   - article-journal
 publication: Energy
 publication_short: Energy
+abstract: "The major topology for wireless power transfer is resonant converters, which use fundamental harmonic approximation as a general analysis method. The accuracy of fundamental harmonic approximation (FHA) is unsatisfactory in some wireless power transfer applications, as the current has distortions due to the non-linear diode-bridge rectifier. Some frequency-domain models also consider harmonics beside fundamental component and indeed have a higher resolution. However, due to the difficulty of modeling the non-linear rectifier, most models are oversimplified by assuming a voltage source on the output to eliminate the rectifier. Moreover, the value of the voltage source is often treated as a fixed number, which is not true for a resistive load. To cover a general case, this paper proposes a frequency-domain analytical model for resonant converters in continuous current mode (CCM) with the capability of considering any load and source situations in kHz frequency range. In terms of computation complexity, the proposed model only involves matrix operation (first-order). A simple algorithm has been chosen to demonstrate the fast convergency and high accuracy of the proposed model. The main findings are verified by the comparison between the theoretical calculation, time-domain simulation and experimental results, where the estimation of output power has 10% improvement than the FHA method."
 summary: A frequency-domain analytical model for resonant converters in
   continuous current mode (CCM) operation for wireless power transfer.
 tags:
   - Wireless Power Transfer
-  - Resonant Converters
-  - Frequency-Domain Analysis
+  - Continuous Current Mode (CCM)
+  - Analytical Modelling
+  - Frequency Domain
 links:
   - type: source
     url: "http://dx.doi.org/10.1016/j.energy.2022.123371"
