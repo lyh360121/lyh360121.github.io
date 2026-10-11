@@ -13,7 +13,7 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "My research focuses on behavior modeling and simulation for autonomous driving and intelligent transportation."
+bio: "My research lies at the intersection of spatiotemporal AI, autonomous driving, and foundation models."
 affiliations:
   - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
@@ -31,13 +31,13 @@ links:
     url: "https://github.com/lyh360121"
     label: "GitHub"
 interests:
-  - "Trajectory Modeling"
   - "Spatiotemporal AI"
-  - "Intelligent Transportation Systems"
-  - "Urban Computing"
+  - "Autonomous Driving"
+  - "Foundation Models"
+  - "Trajectory Modeling"
   - "Large Language Models"
   - "Graph Learning"
-  - "Data Fusion"
+  - "Urban Computing"
 education:
   - degree: "PhD"
     institution: "Korea Advanced Institute of Science and Technology (KAIST)"
