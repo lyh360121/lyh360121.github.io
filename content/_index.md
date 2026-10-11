@@ -10,11 +10,11 @@ sections:
     content:
       username: "me"
       text: |-
-        I am a PhD candidate at the Cho Chun Shik Graduate School of Mobility, KAIST, advised by Prof. Inhi Kim in the [TUPA Lab](https://www.inhi.kim/) (Transport and Urban Planning with AI). My research develops machine learning methods for spatiotemporal and mobility data, turning imperfect urban sensing into reliable inputs for transportation decisions.
+        I'm a PhD candidate at KAIST, working with Prof. Inhi Kim in the [TUPA Lab](https://www.inhi.kim/). I'm interested in teaching machines how a city moves.
 
-        My recent work spans two threads. On **trajectory modeling**, I proposed [ProChunkFormer](/publications/2025-liu-enhanced-trajectory-reconstruction/) for reconstructing trajectories from sparse, noisy GPS data, and [SDA](/publications/2025-liu-sda/), an evaluation protocol that measures how much past, current, and goal information each contributes to forecasting accuracy. On **urban semantics**, I combine large language models with graph learning to [represent road networks](/publications/2025-liu-a-generalizable-semantic/) and to [align labels across heterogeneous transportation datasets](/publications/2025-liu-cross-taxonomy-label-alignment/).
+        Lately that means generative models of traffic, which learn how vehicles and people move together and can simulate realistic traffic for autonomous driving. I see this as a step toward foundation models for mobility. I'm also starting to explore autonomous sensing.
 
-        Before KAIST, I worked as a software engineer at Meituan (2021–2023) and received my M.S. from Zhejiang University, where I contributed to physics-based modeling of sediment transport and wireless power transfer.
+        Earlier, I worked on recovering trajectories from sparse GPS data, on what trajectory prediction models actually rely on, and on using LLMs to help models understand road networks. Before my PhD, I spent two years as a software engineer at Meituan.
       headings:
         about: "Biography"
         education: ""

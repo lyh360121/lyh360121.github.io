@@ -13,7 +13,7 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "I develop machine learning methods for spatiotemporal and mobility data, focusing on trajectory reconstruction and forecasting, and on combining large language models with graph learning for road networks."
+bio: "I'm interested in teaching machines how a city moves, from generative trajectory models to autonomous-driving simulation."
 affiliations:
   - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
