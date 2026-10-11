@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 920" width="1360" height="920" font-family="'Times New Roman', Times, serif" font-size="40" text-anchor="middle" dominant-baseline="central">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#000"/>
+    </marker>
+  </defs>
+  <rect width="1360" height="920" fill="#fff"/>
+  <g fill="none" stroke="#000" stroke-width="3">
+    <rect x="5" y="4" width="1350" height="321"/>
+    <rect x="5" y="350" width="1350" height="158"/>
+    <rect x="5" y="530" width="1350" height="386"/>
+  </g>
+
+  <!-- RNSAGE -->
+  <g fill="#fff" stroke="#000" stroke-width="2.5">
+    <rect x="77" y="42" width="257" height="68"/>
+    <rect x="440" y="42" width="257" height="68"/>
+    <rect x="797" y="42" width="206" height="68"/>
+    <rect x="1114" y="42" width="216" height="68"/>
+    <rect x="1117" y="180" width="209" height="68"/>
+  </g>
+  <text x="205" y="77">Sampling</text>
+  <text x="568" y="77">Aggregation</text>
+  <text x="900" y="77">forward</text>
+  <text x="1222" y="77">Loss</text>
+  <text x="1221" y="215">backward</text>
+  <text x="797" y="232" font-weight="bold">RNSAGE</text>
+  <g stroke="#000" stroke-width="2.5" marker-end="url(#a)">
+    <line x1="334" y1="76" x2="440" y2="76"/>
+    <line x1="697" y1="76" x2="797" y2="76"/>
+    <line x1="1003" y1="76" x2="1114" y2="76"/>
+    <line x1="1221" y1="110" x2="1221" y2="180"/>
+    <line x1="205" y1="396" x2="205" y2="110"/>
+    <line x1="569" y1="396" x2="569" y2="110"/>
+  </g>
+  <text x="1095" y="287">Update</text>
+  <path d="M1197 265 H1247 V298 H1275 L1222 335 L1169 298 H1197 Z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="miter"/>
+
+  <!-- HetSemNet -->
+  <circle cx="205" cy="427" r="31" fill="#fff" stroke="#000" stroke-width="2.5"/>
+  <circle cx="569" cy="427" r="31" fill="#000"/>
+  <text x="92" y="400">Context</text>
+  <text x="678" y="408">Roads</text>
+  <text x="1058" y="432" font-weight="bold">HetSemNet</text>
+
+  <!-- Input Extractor -->
+  <g fill="#000" stroke="#fff" stroke-width="3">
+    <rect x="107" y="610" width="39.2" height="63"/>
+    <rect x="146.2" y="610" width="39.2" height="63"/>
+    <rect x="185.4" y="610" width="39.2" height="63"/>
+    <rect x="224.6" y="610" width="39.2" height="63"/>
+    <rect x="263.8" y="610" width="39.2" height="63"/>
+  </g>
+  <text x="105" y="727">Semantic</text>
+  <rect x="68" y="793" width="275" height="104" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/>
+  <text x="205" y="847">LLM (frozen)</text>
+  <text x="432" y="677" font-weight="bold">Input</text>
+  <text x="432" y="727" font-weight="bold">Extractor</text>
+  <g fill="#fff" stroke="#000" stroke-width="2.5">
+    <rect x="797" y="562" width="431" height="68"/>
+    <rect x="797" y="692" width="431" height="68"/>
+    <rect x="797" y="812" width="431" height="68"/>
+  </g>
+  <text x="1012" y="597">Handcrafted Features</text>
+  <text x="1012" y="727">Road Network</text>
+  <text x="1012" y="847">Unstructured Text</text>
+  <text x="687" y="565">Attribute</text>
+  <text x="695" y="688">Structural</text>
+  <g fill="none" stroke="#000" stroke-width="2.5">
+    <polyline points="797,597 569,597"/>
+    <polyline points="797,727 569,727 569,460" marker-end="url(#a)"/>
+  </g>
+  <g stroke="#000" stroke-width="2.5" marker-end="url(#a)">
+    <line x1="205" y1="610" x2="205" y2="460"/>
+    <line x1="205" y1="793" x2="205" y2="673"/>
+    <line x1="1013" y1="692" x2="1013" y2="630"/>
+    <line x1="1013" y1="760" x2="1013" y2="812"/>
+    <line x1="797" y1="847" x2="343" y2="847"/>
+  </g>
+</svg>
