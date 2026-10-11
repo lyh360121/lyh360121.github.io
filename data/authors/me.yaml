@@ -13,7 +13,7 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "I'm interested in teaching machines how a city moves, from generative trajectory models to autonomous-driving simulation."
+bio: "My research focuses on behavior modeling and simulation for autonomous driving and intelligent transportation."
 affiliations:
   - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
