@@ -21,10 +21,7 @@ summary: A deterministic model unifying the threshold and rate of nonsuspended
   sediment transport across subaqueous bedload, windblown sand, and windblown
   snow.
 tags:
-  - Sediment Transport
-  - Aeolian Transport
-  - Bedload
-  - Discrete Element Method
+  - Physics-Based Modeling
 links:
   - type: pdf
     url: paper.pdf

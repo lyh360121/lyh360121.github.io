@@ -14,13 +14,9 @@ summary: A model-agnostic protocol that decomposes trajectory forecasting
   inputs into Past, Current, and Prior to quantify each one's standalone and
   marginal contribution.
 tags:
-  - Trajectory forecasting
-  - Sequential decomposition
-  - Input attribution
-  - Temporal dependence
-  - Goal-conditioned prediction
-  - Intelligent transportation systems
-  - Model interpretability
+  - Trajectory Modeling
+  - Spatiotemporal AI
+  - Intelligent Transportation Systems
 featured: true
 hugoblox:
   ids:

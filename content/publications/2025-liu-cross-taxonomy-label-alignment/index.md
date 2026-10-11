@@ -18,10 +18,11 @@ summary: LLM prompt-based pseudo-labels plus road-network structural
   embeddings align labels across transportation taxonomies, even with only 1%
   labeled data.
 tags:
-  - Cross-Taxonomy Label Alignment
-  - Transportation Data Integration
   - Large Language Models
-  - Semi-Supervised Learning
+  - Graph Learning
+  - Data Fusion
+  - Urban Computing
+  - Intelligent Transportation Systems
 featured: true
 image:
   caption: "Framework overview: semantic features (LLM-generated pseudo-labels

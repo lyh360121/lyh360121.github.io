@@ -18,11 +18,11 @@ summary: A heterogeneous graph framework (HetSemNet) that fuses LLM-derived POI
   semantics with road topology, generalizing across cities on road type
   classification.
 tags:
-  - Road Network Representation
-  - Heterogeneous Graphs
+  - Graph Learning
   - Large Language Models
-  - Graph Neural Networks
-  - Representation Learning
+  - Urban Computing
+  - Data Fusion
+  - Intelligent Transportation Systems
 featured: true
 image:
   caption: "Framework of the proposed SaRNSAGE: raw road-network and POI text

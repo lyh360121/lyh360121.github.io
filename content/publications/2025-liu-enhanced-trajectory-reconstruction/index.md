@@ -46,11 +46,9 @@ links:
     url: paper.pdf
 featured: true
 tags:
-  - Trajectory reconstruction
-  - Transformer
-  - Chunked processing
-  - Heuristic-informed
-  - Parallel computing
+  - Trajectory Modeling
+  - Spatiotemporal AI
+  - Intelligent Transportation Systems
 summary: ProChunkFormer, a progressive chunked transformer that reconstructs
   trajectories from sparse, noisy GPS data, matching an autoregressive
   transformer's accuracy while running faster.

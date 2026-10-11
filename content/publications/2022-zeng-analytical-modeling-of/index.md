@@ -18,10 +18,7 @@ abstract: "The major topology for wireless power transfer is resonant converters
 summary: A frequency-domain analytical model for resonant converters in
   continuous current mode (CCM) operation for wireless power transfer.
 tags:
-  - Wireless Power Transfer
-  - Continuous Current Mode (CCM)
-  - Analytical Modelling
-  - Frequency Domain
+  - Physics-Based Modeling
 featured: false
 ---
 
