@@ -12,9 +12,9 @@ sections:
       text: |-
         I am a Ph.D. candidate at the Cho Chun Shik Graduate School of Mobility, KAIST, advised by Prof. Inhi Kim in the [TUPA Lab](https://www.inhi.kim/).
 
-        My research lies at the intersection of **spatiotemporal AI, autonomous driving, and foundation models**. I study how machines can learn from mobility data, including trajectories, road networks, and the urban context around them, to reconstruct, predict, and simulate how people and vehicles move. My work spans trajectory reconstruction and forecasting, LLM-enhanced road network learning, and, more recently, generative trajectory models for driving simulation. I am also exploring autonomous sensing.
+        My research focuses on **spatiotemporal AI for mobility**: learning from trajectories, road networks, and their urban context to model how people and vehicles move and the spaces they move through. One line of my work models movement itself, from reconstructing trajectories out of sparse GPS data and forecasting future motion to, more recently, generating multi-agent trajectories for autonomous-driving simulation. Another line models the environment, using large language models and graph learning to give road networks semantic representations that transfer across cities and datasets. Both lines point toward foundation models for mobility. Beyond modeling, I am also exploring autonomous sensing.
 
-        Before my Ph.D., I was a software engineer at Meituan, and I received my M.S. from Zhejiang University.
+        I received my M.S. from Zhejiang University and worked as a software engineer at Meituan before starting my Ph.D.
 
         Feel free to reach out if you are interested in collaboration.
       headings:

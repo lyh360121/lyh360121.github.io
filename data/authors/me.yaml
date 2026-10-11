@@ -13,7 +13,7 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "My research lies at the intersection of spatiotemporal AI, autonomous driving, and foundation models."
+bio: "My research focuses on spatiotemporal AI for mobility, from trajectory modeling and autonomous-driving simulation to foundation models."
 affiliations:
   - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
