@@ -12,7 +12,7 @@ sections:
       text: |-
         I am a Ph.D. candidate at the Cho Chun Shik Graduate School of Mobility, KAIST, advised by Prof. Inhi Kim in the [TUPA Lab](https://www.inhi.kim/).
 
-        My research focuses on learning how people and vehicles move from large-scale spatiotemporal data. I use generative models and large language models to understand and simulate mobility, mainly for autonomous driving and urban transportation, with the long-term goal of building foundation models for mobility. Recently, I have started extending this work to autonomous sensing.
+        My research focuses on how machines can sense, understand, and simulate the movement of people and vehicles. I approach this with large-scale spatiotemporal data, generative models, and large language models, mainly in autonomous driving and urban transportation, with the long-term goal of building foundation models for mobility.
 
         I received my M.S. from Zhejiang University and worked as a software engineer at Meituan before starting my Ph.D.
 
