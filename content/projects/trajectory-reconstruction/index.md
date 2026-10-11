@@ -1,8 +1,11 @@
 ---
-title: "Intelligent Spatiotemporal Computing"
+title: "Trajectory Observation–Reconstruction Co-Design"
 date: 2026-03-08
+lastmod: 2026-10-11
 draft: false
-summary: "A research direction on robust, resource-efficient, and interpretable AI for modeling spatiotemporal dynamics such as trajectories and traffic."
+project_kind: direction
+weight: 30
+summary: "Preserving useful mobility information under limited observation resources through the co-design of trajectory selection, reporting, and reconstruction."
 tags:
   - Spatiotemporal AI
   - Trajectory Modeling
@@ -10,25 +13,30 @@ tags:
 
 ---
 
-## Motivation
+## Research Focus
 
-Trajectories, sensor streams, and traffic flows are the main record of how people and vehicles move through a city, but the data that reaches a model is rarely clean. GPS fixes are sparse and noisy, sensing and communication budgets are limited, and forecasting models are often deployed without a clear account of which inputs their predictions depend on.
+Urban mobility applications use discrete observations to represent continuous movement. Storage and communication constraints limit the observations that can be retained or reported. Which observations are available, and how they are reconstructed, jointly determine the movement information a system can provide.
 
-This direction develops methods that remain reliable under these conditions: recovering continuous movement from imperfect observations, making efficient use of limited sensing and computing budgets, and making transparent what information a spatiotemporal model actually relies on.
+My doctoral research, *Compression–Reconstruction Co-Design for Urban Mobility Trajectories*, studies this relationship. The aim is to preserve useful movement information at the resource level a system actually achieves, by considering observation decisions and reconstruction together.
 
-## Research Questions
+## Complementary Research Settings
 
-- **RQ1: Robustness to imperfect data.** How can models reconstruct continuous spatiotemporal dynamics from fragmented, sparse, and noisy sensor streams?
-- **RQ2: Efficiency under constraints.** How can data collection and processing (for example, active sampling or compression) adapt to bandwidth and computing budgets without degrading downstream tasks?
-- **RQ3: Interpretability.** How can we attribute a spatiotemporal model's predictions to the inputs it uses, and move toward causal explanations for safety-critical decisions?
+- **Completed-trajectory retention:** Once a trip is recorded, which observations should be kept under a fixed retained-point budget? Current work examines reconstruction-aware selection and refinement of retained point sets.
+- **Live trajectory reporting:** As a trip unfolds, when should a source report a new observation so that a receiver can maintain an accurate movement state? Current work coordinates reporting decisions with the state propagated at the receiver.
+- **Sparse-trajectory reconstruction:** How does recoverability change as gaps between available observations grow? This work studies road-consistent reconstruction and the computational cost of recovering long trajectories.
 
-## Work So Far
+Completed retention can use the full recorded trip; live reporting makes decisions with information available at the current time. These settings share a co-design perspective and are evaluated under their respective information conditions.
 
-- **RQ1 (Data recovery):** We introduced ProChunkFormer, which reconstructs long trajectories from sparse, noisy GPS data as chunks decoded in parallel, conditioned on a semi-high-frequency skeleton. It matches an autoregressive transformer's accuracy while running faster, with the largest gains at long sampling intervals (up to 240 s).
-  _([Enhanced trajectory reconstruction from sparse and noisy GPS data](/publications/2025-liu-enhanced-trajectory-reconstruction/), published in Communications in Transportation Research)_
-- **RQ3 (Input attribution):** We proposed SDA, a model-agnostic evaluation protocol that splits forecasting inputs into Past, Current, and Prior and measures each one's standalone and marginal contribution through controlled input gating. It shows that gains from history saturate after short windows (about 6–8 steps), and that a reliable goal prior helps more than additional history, especially at longer horizons.
-  _([Sequential decomposition and attribution for trajectory forecasting](/publications/2025-liu-sda/), published in Knowledge-Based Systems)_
+Road-network structure and semantics provide another source of information for mobility models. Related work on [Urban Knowledge and Semantic Intelligence](/projects/urban-knowledge-and-semantic-intelligence/) develops road representations and compatible labels, and examines the value of this context in stated transportation tasks.
 
-## Outlook
+## Published Studies
 
-Methods for recovering, sampling, and interpreting spatiotemporal data are relevant to applications that depend on reliable movement data, such as urban digital twins, drone routing, and autonomous fleet management.
+- **Reconstruction capability:** [ProChunkFormer](/publications/2025-liu-enhanced-trajectory-reconstruction/) reconstructs long trajectories from sparse, noisy GPS observations using progressive skeleton generation and parallel chunk completion. It studies the accuracy and efficiency of recovery across increasing observation intervals. Published in *Communications in Transportation Research*.
+- **Conditional information value:** [Sequential Decomposition and Attribution (SDA)](/publications/2025-liu-sda/) uses controlled input gating to examine the contributions of historical trajectory, current state, and available goal information to forecasting. It is a supporting information-value study within the wider research program. Published in *Knowledge-Based Systems*.
+- **Urban context:** [Semantic graph learning](/publications/2025-liu-a-generalizable-semantic/) and [cross-taxonomy label alignment](/publications/2025-liu-cross-taxonomy-label-alignment/) study road representations and semantic compatibility across datasets. Published in *IEEE ITSC 2025*.
+
+## From Research to Systems
+
+[Autonomous Traffic Sensor Web (ATSW)](/projects/autonomous-traffic-sensor-web/) is a working local prototype for inspecting GPS reporting decisions, receiver estimates, and historical retention. Its recorded-trajectory replay and explicit source–receiver states make the effects of observation decisions visible. The current prototype uses heuristic reporting, Kalman estimation, and a geometric historical baseline; it provides a setting for future evaluation of learned methods.
+
+Across these studies, the shared question is how much useful movement information a reduced observation record can support. Retained-point count and reporting ratio are evaluated alongside movement fidelity, with their resource definitions made explicit.

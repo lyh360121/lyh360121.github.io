@@ -1,0 +1,36 @@
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+<div class="research-shell">
+  <div class="research-section-heading">
+    <p class="research-eyebrow">From methods to systems</p>
+    {{ if $page.IsHome }}<h2>{{ $block.content.title }}</h2>{{ else }}<h1>{{ $block.content.title }}</h1>{{ end }}
+    <p>{{ $block.content.text }}</p>
+  </div>
+  <div class="research-system-grid">
+    {{ range (where site.RegularPages "Params.current" true).ByWeight }}
+    {{ $system := . }}
+    <article class="research-system-card">
+      {{ with .Resources.GetMatch "preview.*" }}
+      <img class="research-system-preview" src="{{ .RelPermalink }}" width="800" height="420" loading="lazy" alt="{{ $system.Params.preview_alt | default "Conceptual illustration of the research system" }}">
+      {{ end }}
+      <div class="research-system-content">
+        <p class="research-status">{{ .Params.status | default "Research in progress" }}</p>
+        {{ if $page.IsHome }}<h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>{{ else }}<h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>{{ end }}
+        <p>{{ .Params.summary }}</p>
+        <a class="research-text-link" href="{{ .RelPermalink }}">Explore project <span aria-hidden="true">→</span><span class="research-sr-only">: {{ .Title }}</span></a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+  {{ if $block.content.show_directions }}
+  <div class="research-directions">
+    <h2>Research Directions</h2>
+    {{ range (where (where site.RegularPages "Section" "projects") "Params.project_kind" "direction").ByWeight }}
+    <article>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }} <span aria-hidden="true">→</span></a></h3>
+      <p>{{ .Params.summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>

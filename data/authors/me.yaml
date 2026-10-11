@@ -13,7 +13,7 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "My research interests include spatiotemporal AI, trajectory prediction and generation, foundation models, autonomous driving, and autonomous sensing."
+bio: "My research spans spatiotemporal AI, generative modeling, and representation learning. My published work covers trajectory reconstruction, motion prediction analysis, and road-network representations. I am currently developing research systems for controllable traffic simulation and adaptive sensing, with applications in autonomous driving and urban mobility."
 affiliations:
   - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
@@ -32,13 +32,9 @@ links:
     label: "GitHub"
 interests:
   - "Spatiotemporal AI"
+  - "Generative Modeling & Simulation"
   - "Autonomous Driving"
-  - "Generative Models"
-  - "Foundation Models"
-  - "Trajectory Modeling"
-  - "Large Language Models"
-  - "Graph Learning"
-  - "Urban Computing"
+  - "Representation Learning"
 education:
   - degree: "PhD"
     institution: "Korea Advanced Institute of Science and Technology (KAIST)"

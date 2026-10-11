@@ -1,26 +1,17 @@
 ---
-title: 'Projects'
-date: 2024-05-19
+title: Research & Systems
+date: 2026-10-11
+lastmod: 2026-10-11
 type: landing
-
 design:
-  # Section spacing
-  spacing: '5rem'
-
-# Page sections
+  spacing: "4rem"
 sections:
-  - block: collection
+  - block: current-systems
     content:
-      title: Research Directions
-      text: Ongoing research agendas, and the publications that have come out of them so far.
-      filters:
-        folders:
-          - projects
+      title: Research & Systems
+      text: "Current system projects and the research questions behind them."
+      show_directions: true
     design:
-      view: article-grid
-      fill_image: false
-      columns: 2
-      show_date: false
-      show_read_time: false
-      show_read_more: false
+      spacing:
+        padding: ["4rem", "0", "3rem", "0"]
 ---

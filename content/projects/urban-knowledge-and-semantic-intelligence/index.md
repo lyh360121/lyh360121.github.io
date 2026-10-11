@@ -1,6 +1,9 @@
 ---
 title: "Urban Knowledge and Semantic Intelligence"
 date: 2026-03-08
+lastmod: 2026-10-11
+project_kind: direction
+weight: 40
 draft: false
 summary: "A research direction bridging large language models and graph learning to give road networks generalizable urban semantics."
 tags:
@@ -13,7 +16,7 @@ tags:
 
 ## Motivation
 
-Coordinates describe _how_ things move through a city, but not _why_. Road networks sit within rich semantic context, such as points of interest, land use, functional zones, and road classes. Much of this context exists only as unstructured text, or in datasets that use incompatible category systems. Graph learning methods for road networks mostly rely on topology and a few numeric attributes, and have no principled way to bring this heterogeneous context in.
+Trajectories describe movement through a city; urban semantics add context to those movements. Road networks sit within rich information about points of interest, land use, functional zones, and road classes. Much of this context exists as unstructured text, or in datasets that use incompatible category systems. Many road graph models emphasize topology and numeric attributes. Integrating heterogeneous semantic context reliably remains a challenge.
 
 This direction combines large language models, which can read and compare unstructured descriptions, with graph learning, which captures network structure, to build road network representations that carry urban semantics and transfer across cities and datasets.
 

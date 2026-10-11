@@ -46,6 +46,7 @@ jobs:
 
     - name: Setup pnpm
       if: hashFiles('package.json') != ''
+      # Read the exact pnpm version from package.json's packageManager field.
       uses: pnpm/action-setup@v4
 
     - name: Get Hugo Version
@@ -79,10 +80,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        # Install Tailwind CLI if package.json exists
+        # Install the committed dependency versions with the pinned package manager.
         if [ -f "package.json" ]; then
-          echo "Installing Tailwind dependencies..."
-          pnpm install --no-frozen-lockfile || npm install
+          echo "Installing dependencies from pnpm-lock.yaml..."
+          pnpm install --frozen-lockfile
         fi
 
     - name: Setup Hugo

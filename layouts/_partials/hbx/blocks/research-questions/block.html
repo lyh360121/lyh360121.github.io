@@ -1,0 +1,29 @@
+{{ $block := .wcBlock }}
+<div class="research-shell">
+  <div class="research-section-heading">
+    <p class="research-eyebrow">{{ $block.content.eyebrow }}</p>
+    <h2>{{ $block.content.title }}</h2>
+    <p>{{ $block.content.text }}</p>
+  </div>
+  <div class="research-question-grid">
+    {{ range $index, $question := $block.content.questions }}
+    <article class="research-question">
+      <span class="research-question-number" aria-hidden="true">0{{ add $index 1 }}</span>
+      <h3>{{ $question.title }}</h3>
+      <p class="research-question-prompt">{{ $question.question }}</p>
+      <p>{{ $question.text }}</p>
+      {{ with $question.links }}
+      <ul class="research-evidence">
+        {{ range . }}
+        <li><a href="{{ .url | relURL }}">{{ .label }} <span aria-hidden="true">→</span></a></li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+  <div class="research-focus-links">
+    <a class="research-text-link" href="{{ "projects/trajectory-reconstruction/" | relURL }}">Trajectory research overview <span aria-hidden="true">→</span></a>
+    <a class="research-text-link" href="{{ "projects/urban-knowledge-and-semantic-intelligence/" | relURL }}">Urban semantics research <span aria-hidden="true">→</span></a>
+  </div>
+</div>

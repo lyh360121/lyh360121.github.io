@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-labelledby="title desc">
+  <title id="title">Adaptive reporting and receiver estimation concept</title>
+  <desc id="desc">A source trajectory with selected GPS observations linked to a receiver that maintains an estimated trajectory.</desc>
+  <rect width="800" height="420" fill="#f0edf9"/>
+  <g font-family="Arial, sans-serif">
+    <text x="35" y="40" fill="#172033" font-size="19" font-weight="700">Adaptive reports · receiver state</text>
+    <text x="765" y="40" text-anchor="end" fill="#68758a" font-size="14">Conceptual overview</text>
+  </g>
+  <rect x="35" y="80" width="285" height="267" rx="14" fill="#fff" stroke="#ded8ee"/>
+  <rect x="480" y="80" width="285" height="267" rx="14" fill="#fff" stroke="#ded8ee"/>
+  <g stroke="#e9e6f0" stroke-width="2">
+    <path d="M70 155H285M70 215H285M70 275H285M115 140V315M175 140V315M235 140V315"/>
+    <path d="M515 155H730M515 215H730M515 275H730M560 140V315M620 140V315M680 140V315"/>
+  </g>
+  <path d="M75 292Q108 236 142 233T204 190Q228 165 278 145" stroke="#b3a3df" stroke-width="4" fill="none"/>
+  <g fill="#fff" stroke="#b3a3df" stroke-width="3">
+    <circle cx="97" cy="261" r="5"/><circle cx="142" cy="233" r="5"/><circle cx="175" cy="219" r="5"/><circle cx="228" cy="170" r="5"/><circle cx="252" cy="155" r="5"/>
+  </g>
+  <g fill="#6b45d3" stroke="#fff" stroke-width="3"><circle cx="75" cy="292" r="8"/><circle cx="204" cy="190" r="8"/><circle cx="278" cy="145" r="8"/></g>
+  <path d="M520 292L648 190L723 145" fill="none" stroke="#2585a0" stroke-width="4" stroke-dasharray="9 7"/>
+  <g fill="#6b45d3" stroke="#fff" stroke-width="3"><circle cx="520" cy="292" r="8"/><circle cx="648" cy="190" r="8"/><circle cx="723" cy="145" r="8"/></g>
+  <path d="M340 215H456" stroke="#6b45d3" stroke-width="3"/><path d="m446 207 10 8-10 8" fill="none" stroke="#6b45d3" stroke-width="3"/>
+  <g font-family="Arial, sans-serif" font-size="16" fill="#46536a">
+    <text x="56" y="115" font-weight="700">Source observations</text>
+    <text x="500" y="115" font-weight="700">Receiver estimate</text>
+    <text x="400" y="189" text-anchor="middle">Selected</text><text x="400" y="246" text-anchor="middle">GPS reports</text>
+    <text x="35" y="382">Compare reporting effort with recovered movement information.</text>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $author := index site.Data.authors ($block.content.username | default "me") }}
+<div class="research-shell research-hero">
+  <div class="research-person">
+    {{ with resources.Get "media/authors/me.jpg" }}
+      {{ $avatar := .Fill "280x280 Center webp" }}
+      <img class="research-avatar" src="{{ $avatar.RelPermalink }}" width="140" height="140" alt="{{ $author.name.display }}" fetchpriority="high">
+    {{ end }}
+    <h1>{{ $author.name.display }}</h1>
+    <p class="research-role">{{ $author.role }} · KAIST</p>
+    <p class="research-affiliation">Cho Chun Shik Graduate School of Mobility</p>
+    <div class="research-social" aria-label="Academic profiles and contact">
+      {{ range $author.links }}
+      <a href="{{ .url | safeURL }}" aria-label="{{ .label }}">{{ if eq .label "E-mail Me" }}Email{{ else if eq .label "Google Scholar" }}Scholar{{ else }}{{ .label }}{{ end }}</a>
+      {{ end }}
+    </div>
+  </div>
+  <div class="research-intro">
+    <p class="research-eyebrow">{{ $block.content.eyebrow }}</p>
+    <h2>{{ $block.content.title }}</h2>
+    <div class="research-copy">{{ $page.RenderString $block.content.text }}</div>
+    <div class="research-actions">
+      <a class="research-button" href="{{ $block.content.primary_action.url | relURL }}">{{ $block.content.primary_action.label }} <span aria-hidden="true">→</span></a>
+      <a class="research-text-link" href="{{ $block.content.secondary_action.url | relURL }}">{{ $block.content.secondary_action.label }} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 # Yonghui Liu — personal academic website
 
-Source for <https://lyh360121.github.io/>, the homepage of Yonghui Liu, PhD candidate at KAIST working on trajectory modeling, spatiotemporal AI, and LLM-based graph learning for transportation and urban mobility.
+Source for <https://lyh360121.github.io/>, the homepage of Yonghui Liu, PhD candidate at KAIST and former software engineer at Meituan, working on spatiotemporal AI, generative modeling, and representation learning for autonomous driving and urban mobility.
 
 ## Structure
 
 - `content/publications/` — one folder per paper (`index.md`, `cite.bib`, figures, and the PDF where the license allows it)
-- `content/projects/` — research directions
+- `content/projects/` — research directions and current system projects
 - `data/authors/me.yaml` — profile, education, experience, and links
 - `config/_default/` — site configuration
 - `layouts/` — local overrides of theme templates

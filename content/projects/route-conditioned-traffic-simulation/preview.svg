@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-labelledby="title desc">
+  <title id="title">Route-conditioned traffic simulation concept</title>
+  <desc id="desc">An illustrative road intersection with two route conditions and several interacting participants.</desc>
+  <rect width="800" height="420" fill="#eef2f8"/>
+  <g fill="#e1e7f0" stroke="#d1d9e7" stroke-width="1">
+    <rect x="35" y="85" width="230" height="75" rx="12"/><rect x="35" y="275" width="230" height="105" rx="12"/>
+    <rect x="530" y="85" width="235" height="75" rx="12"/><rect x="530" y="275" width="235" height="105" rx="12"/>
+  </g>
+  <path d="M0 215H800M398 75V420" stroke="#fff" stroke-width="84"/>
+  <path d="M0 215H800M398 75V420" stroke="#c8d1e1" stroke-width="2" stroke-dasharray="10 12"/>
+  <path d="M70 240H352Q424 240 424 303V383" fill="none" stroke="#6b45d3" stroke-width="7" stroke-linecap="round"/>
+  <path d="M70 190H692" fill="none" stroke="#2585a0" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#6b45d3" stroke="#fff" stroke-width="3">
+    <rect x="167" y="227" width="40" height="23" rx="6"/><rect x="331" y="227" width="40" height="23" rx="6"/><rect x="412" y="326" width="23" height="40" rx="6"/>
+  </g>
+  <g fill="#2585a0" stroke="#fff" stroke-width="3"><rect x="269" y="178" width="40" height="23" rx="6"/><rect x="584" y="178" width="40" height="23" rx="6"/></g>
+  <g fill="#94a3b8" stroke="#fff" stroke-width="3"><rect x="359" y="103" width="23" height="40" rx="6"/><rect x="359" y="300" width="23" height="40" rx="6"/><rect x="714" y="227" width="40" height="23" rx="6"/></g>
+  <g font-family="Arial, sans-serif">
+    <text x="35" y="40" fill="#172033" font-size="19" font-weight="700">Map routes · interacting motion</text>
+    <text x="765" y="40" text-anchor="end" fill="#68758a" font-size="14">Conceptual overview</text>
+    <circle cx="50" cy="111" r="5" fill="#6b45d3"/><text x="65" y="117" fill="#46536a" font-size="16">Alternative route</text>
+    <circle cx="550" cy="111" r="5" fill="#2585a0"/><text x="565" y="117" fill="#46536a" font-size="16">Original route</text>
+    <text x="56" y="324" fill="#46536a" font-size="16">Route conditions</text><text x="56" y="348" fill="#46536a" font-size="16">+ joint motion generation</text>
+    <text x="550" y="324" fill="#46536a" font-size="16">Inspect completion</text><text x="550" y="348" fill="#46536a" font-size="16">and interaction quality</text>
+  </g>
+</svg>
