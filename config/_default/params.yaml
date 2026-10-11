@@ -4,8 +4,7 @@ hugoblox:
     name: Yonghui Liu
     type: person
     tagline: AI | Transportation | Mobility | Data Science | Software Engineer
-    description: ""
-    organization: KAIST
+    description: "PhD candidate at KAIST working on trajectory modeling, spatiotemporal AI, and LLM-based graph learning for transportation and urban mobility."
   theme:
     mode: system
     pack: default

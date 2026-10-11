@@ -1,0 +1,27 @@
+/* Header-image captions sit below the image: the theme's overlay hides much of the wide, short paper diagrams. */
+.featured-image-wrapper {
+  max-height: none !important;
+}
+
+.article-header-caption {
+  position: static;
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0;
+  background: none;
+  color: rgb(100 116 139);
+  opacity: 1;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: center;
+  border-radius: 0;
+}
+
+.dark .article-header-caption {
+  color: rgb(148 163 184);
+}
+
+.article-header-caption a {
+  color: inherit;
+  text-decoration: underline;
+}

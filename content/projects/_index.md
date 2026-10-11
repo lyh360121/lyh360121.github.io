@@ -11,15 +11,15 @@ design:
 sections:
   - block: collection
     content:
-      title: Selected Projects
-      text: I enjoy making things. Here are a selection of projects that I have worked on over the years.
+      title: Research Directions
+      text: Ongoing research agendas, and the publications that have come out of them so far.
       filters:
         folders:
           - projects
     design:
       view: article-grid
       fill_image: false
-      columns: 3
+      columns: 2
       show_date: false
       show_read_time: false
       show_read_more: false
