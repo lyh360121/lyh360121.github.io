@@ -10,11 +10,13 @@ sections:
     content:
       username: "me"
       text: |-
-        I am a Ph.D. candidate at the Cho Chun Shik Graduate School of Mobility, KAIST, advised by Prof. Inhi Kim ([TUPA Lab](https://www.inhi.kim/)).
+        I am a Ph.D. candidate at the Cho Chun Shik Graduate School of Mobility, KAIST, advised by Prof. Inhi Kim in the [TUPA Lab](https://www.inhi.kim/).
 
-        My research focuses on behavior modeling and simulation for autonomous driving and intelligent transportation. I currently work on generative models for multi-agent trajectory prediction and traffic simulation, with the broader goal of building foundation models for mobility. I am also exploring autonomous sensing.
+        My research focuses on **behavior modeling and simulation for autonomous driving**. I build generative models that learn how vehicles and other road users move and interact, and use them for multi-agent trajectory prediction and realistic traffic simulation. Longer term, I am interested in foundation models for mobility. I am also exploring autonomous sensing.
 
         Previously, I worked on trajectory reconstruction, trajectory forecasting, and LLM-enhanced road network learning. Before my Ph.D., I was a software engineer at Meituan, and I received my M.S. from Zhejiang University.
+
+        Feel free to reach out if you are interested in collaboration.
       headings:
         about: "Biography"
         education: ""
