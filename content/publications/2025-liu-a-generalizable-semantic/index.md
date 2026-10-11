@@ -23,11 +23,6 @@ tags:
   - Large Language Models
   - Graph Neural Networks
   - Representation Learning
-links:
-  - type: source
-    url: http://dx.doi.org/10.1109/ITSC60802.2025.11423186
-  - type: pdf
-    url: paper.pdf
 featured: true
 image:
   caption: "Framework of the proposed SaRNSAGE: raw road-network and POI text

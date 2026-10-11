@@ -1,7 +1,5 @@
 ---
-title: |
-  Analytical modeling of resonant converters in frequency domain for
-    wireless power transfer: Continuous current mode (CCM) operation
+title: "Analytical modeling of resonant converters in frequency domain for wireless power transfer: Continuous current mode (CCM) operation"
 authors:
   - Hulong Zeng
   - Pengcheng Jiao
@@ -24,11 +22,6 @@ tags:
   - Continuous Current Mode (CCM)
   - Analytical Modelling
   - Frequency Domain
-links:
-  - type: source
-    url: "http://dx.doi.org/10.1016/j.energy.2022.123371"
-  - type: pdf
-    url: paper.pdf
 featured: false
 ---
 

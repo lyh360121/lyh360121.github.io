@@ -4,7 +4,6 @@ authors:
   - me
   - Inhi Kim
 date: 2025-12-23
-publishDate: "2026-03-08T06:40:20.973Z"
 publication_types:
   - article-journal
 publication: Knowledge-Based Systems
@@ -26,19 +25,12 @@ featured: true
 hugoblox:
   ids:
     doi: 10.1016/j.knosys.2025.115204
-links:
-  - type: source
-    url: "https://dx.doi.org/10.1016/j.knosys.2025.115204"
-  - type: pdf
-    url: paper.pdf
 image:
   caption: "The SDA protocol: inputs are split into Past, Current, and Prior
     streams, combined through controlled gating, then fed to the forecasting
     model and evaluator to attribute each stream's contribution."
   focal_point: ""
   preview_only: false
-projects: []
-slides: ""
 draft: false
 
 ---

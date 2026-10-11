@@ -26,8 +26,6 @@ tags:
   - Bedload
   - Discrete Element Method
 links:
-  - type: source
-    url: "http://dx.doi.org/10.1029/2020JF005859"
   - type: pdf
     url: paper.pdf
 featured: false

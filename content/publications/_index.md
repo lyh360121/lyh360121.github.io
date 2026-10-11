@@ -2,6 +2,9 @@
 title: Publications
 cms_exclude: true
 
+cascade:
+  reading_time: false
+
 # View.
 view: citation
 

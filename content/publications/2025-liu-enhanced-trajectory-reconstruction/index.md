@@ -1,7 +1,5 @@
 ---
-title: |
-  Enhanced trajectory reconstruction from sparse and noisy GPS data: A
-    progressive chunked transformer approach
+title: "Enhanced trajectory reconstruction from sparse and noisy GPS data: A progressive chunked transformer approach"
 authors:
   - me
   - Qian Li
@@ -38,14 +36,12 @@ abstract: >
   autoregressive transformers while offering better running efficiency. It
   improves the accuracy, F1 score (F1), mean absolute error (MAE), and road
   network mean absolute error (MAE_RN) by 23.1%, 18.6%, 22.3%, and 25.1%,
-  respectively, for trajectories with a long interval time of up to 240 ​s.
+  respectively, for trajectories with a long interval time of up to 240 s.
   Furthermore, we investigate incorporating heuristic information to guide
   trajectory reconstruction for each block. The experimental results indicate an
   improvement in both the overall performance and convergence speed of the
   model.
 links:
-  - type: source
-    url: http://dx.doi.org/10.1016/j.commtr.2025.100200
   - type: pdf
     url: paper.pdf
 featured: true
@@ -56,8 +52,8 @@ tags:
   - Heuristic-informed
   - Parallel computing
 summary: ProChunkFormer, a progressive chunked transformer that reconstructs
-  trajectories from sparse, noisy GPS data with better accuracy and
-  efficiency than autoregressive baselines.
+  trajectories from sparse, noisy GPS data, matching an autoregressive
+  transformer's accuracy while running faster.
 image:
   caption: "ProChunkFormer overview. Phase 1 (Skeleton Generation): the
     sparse, noisy GPS trajectory and the road network are encoded and
