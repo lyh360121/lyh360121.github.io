@@ -13,9 +13,9 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "My research focuses on developing advanced modeling techniques for temporal and spatiotemporal data, with a mission to empower Urban Computing and Autonomous Driving systems. I am dedicated to bridging the gap between raw urban data and intelligent decision-making in future mobility.\n"
+bio: "I develop machine learning methods for spatiotemporal and mobility data, focusing on trajectory reconstruction and forecasting, and on combining large language models with graph learning for road networks."
 affiliations:
-  - name: "KAIST CCS Mobility"
+  - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
 links:
   - icon: "at-symbol"
