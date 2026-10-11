@@ -13,7 +13,7 @@ postnominals:
 status:
   icon: "☕️"
 role: "PhD candidate"
-bio: "My research focuses on how machines can sense, understand, and simulate the movement of people and vehicles."
+bio: "My research interests include spatiotemporal AI, trajectory prediction and generation, foundation models, autonomous driving, and autonomous sensing."
 affiliations:
   - name: "Cho Chun Shik Graduate School of Mobility, KAIST"
     url: "https://mo.kaist.ac.kr/"
