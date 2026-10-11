@@ -1,33 +1,20 @@
 ---
-title: 'Experience'
-date: 2023-10-24
+title: 'Experience & CV'
+summary: 'Yonghui Liu: research and engineering in spatiotemporal AI, generative modeling, and representation learning. Education, professional experience, research contributions, current projects, and a downloadable CV.'
+date: 2026-10-12T00:00:00+09:00
+lastmod: 2026-10-12T00:00:00+09:00
 type: landing
 
 design:
-  spacing: '5rem'
+  spacing: '3.5rem'
 
-# Note: `username` refers to the user's folder name in `content/authors/`
-
-# Page sections
 sections:
-  - block: resume-experience
+  - block: professional-resume
+    id: cv
     content:
       username: me
+      download_url: /uploads/Yonghui_Liu_CV.pdf
     design:
-      # Hugo date format
-      date_format: 'January 2006'
-      # Education or Experience section first?
-      is_education_first: false
-  # - block: resume-skills
-  #   content:
-  #     title: Skills & Hobbies
-  #     username: me
-  # - block: resume-awards
-  #   content:
-  #     title: Awards
-  #     username: me
-  - block: resume-languages
-    content:
-      title: Languages
-      username: me
+      spacing:
+        padding: ['3.5rem', '0', '3.5rem', '0']
 ---

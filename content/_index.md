@@ -18,8 +18,9 @@ sections:
 
         I am a Ph.D. candidate at **KAIST**, advised by Prof. Inhi Kim in the [TUPA Lab](https://www.inhi.kim/). I received my M.S. from Zhejiang University and previously worked as a software engineer at **Meituan**.
       primary_action:
-        label: View Publications
-        url: /#papers
+        label: Download CV
+        url: /uploads/Yonghui_Liu_CV.pdf
+        download: true
       secondary_action:
         label: Explore Projects
         url: /projects/

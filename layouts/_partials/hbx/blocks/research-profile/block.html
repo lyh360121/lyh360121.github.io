@@ -21,7 +21,7 @@
     <h2>{{ $block.content.title }}</h2>
     <div class="research-copy">{{ $page.RenderString $block.content.text }}</div>
     <div class="research-actions">
-      <a class="research-button" href="{{ $block.content.primary_action.url | relURL }}">{{ $block.content.primary_action.label }} <span aria-hidden="true">→</span></a>
+      <a class="research-button" href="{{ $block.content.primary_action.url | relURL }}"{{ if $block.content.primary_action.download }} download{{ end }}>{{ $block.content.primary_action.label }} <span aria-hidden="true">→</span></a>
       <a class="research-text-link" href="{{ $block.content.secondary_action.url | relURL }}">{{ $block.content.secondary_action.label }} <span aria-hidden="true">→</span></a>
     </div>
   </div>

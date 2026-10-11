@@ -1,0 +1,131 @@
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $author := index site.Data.authors ($block.content.username | default "me") }}
+{{ $resume := site.Data.resume }}
+{{ $email := "" }}
+{{ range $author.links }}
+  {{ if hasPrefix .url "mailto:" }}{{ $email = .url }}{{ end }}
+{{ end }}
+
+<div class="research-shell cv-shell" data-pagefind-body>
+  <header class="cv-header">
+    <div class="cv-heading">
+      <p class="research-eyebrow">AI Research &amp; Engineering</p>
+      <h1>Experience &amp; CV</h1>
+      <p class="cv-role">{{ $author.role }} · KAIST · Former Software Engineer at Meituan</p>
+    </div>
+    <div class="cv-actions">
+      {{ with $block.content.download_url }}
+      <a class="research-button" href="{{ . | relURL }}" download>Download CV (PDF) <span aria-hidden="true">↓</span></a>
+      {{ end }}
+      {{ with $email }}<a class="research-text-link" href="{{ . | safeURL }}">Email me</a>{{ end }}
+    </div>
+  </header>
+
+  {{ with $resume.summary }}<p class="cv-summary">{{ $page.RenderString (dict "display" "inline") . }}</p>{{ end }}
+  {{ with $resume.areas }}
+  <ul class="cv-areas" aria-label="Research areas">
+    {{ range . }}<li class="cv-area">{{ . }}</li>{{ end }}
+  </ul>
+  {{ end }}
+
+  <nav class="cv-section-nav" aria-label="CV sections">
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#research-contributions">Research contributions</a>
+    <a href="#current-projects">Current projects</a>
+    <a href="#selected-publications">Selected publications</a>
+    <a href="#technical-skills">Technical skills</a>
+    <a href="#languages">Languages</a>
+  </nav>
+
+  <div class="cv-background-grid">
+    <section id="experience" class="cv-section" aria-labelledby="cv-experience-heading">
+      <h2 id="cv-experience-heading">Experience</h2>
+      {{ range $author.experience }}
+      <article class="cv-entry">
+        <h3>{{ .role }}</h3>
+        <p class="cv-institution">{{ .org }}</p>
+        <p class="cv-dates">{{ with .start }}<time datetime="{{ . }}">{{ time.Format "Jan 2006" . }}</time>{{ end }} – {{ with .end }}<time datetime="{{ . }}">{{ time.Format "Jan 2006" . }}</time>{{ else }}Present{{ end }}</p>
+        {{ with .summary }}<p>{{ $page.RenderString . }}</p>{{ end }}
+      </article>
+      {{ end }}
+    </section>
+
+    <section id="education" class="cv-section" aria-labelledby="cv-education-heading">
+      <h2 id="cv-education-heading">Education</h2>
+      {{ range $author.education }}
+      <article class="cv-entry">
+        <h3>{{ if eq .degree "PhD" }}Ph.D. candidate{{ else if eq .degree "MS" }}M.S.{{ else if eq .degree "BS" }}B.S.{{ else }}{{ .degree }}{{ end }}</h3>
+        <p class="cv-institution">{{ .institution }}</p>
+        <p class="cv-dates">{{ .year }}</p>
+        {{ with .summary }}<p>{{ $page.RenderString . }}</p>{{ end }}
+      </article>
+      {{ end }}
+    </section>
+  </div>
+
+  <section id="research-contributions" class="cv-section" aria-labelledby="cv-research-heading">
+    <h2 id="cv-research-heading">Research Contributions</h2>
+    <div class="cv-card-grid">
+      {{ range $resume.highlights }}
+      {{ $highlight := . }}
+      <article class="cv-card">
+        <h3>{{ .title }}</h3>
+        <p class="cv-card-copy">{{ $page.RenderString (dict "display" "inline") .text }}</p>
+        {{ with .url }}<p><a class="cv-evidence research-text-link" href="{{ . | relURL }}">View supporting work <span aria-hidden="true">→</span><span class="research-sr-only">: {{ $highlight.title }}</span></a></p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section id="current-projects" class="cv-section" aria-labelledby="cv-projects-heading">
+    <h2 id="cv-projects-heading">Current Projects</h2>
+    <div class="cv-card-grid">
+      {{ range $resume.projects }}
+      {{ $project := . }}
+      <article class="cv-card">
+        {{ with .status }}<span class="research-status">{{ . }}</span>{{ end }}
+        <h3>{{ .title }}</h3>
+        <p class="cv-card-copy">{{ $page.RenderString (dict "display" "inline") .text }}</p>
+        {{ with .url }}<p><a class="cv-evidence research-text-link" href="{{ . | relURL }}">Explore project <span aria-hidden="true">→</span><span class="research-sr-only">: {{ $project.title }}</span></a></p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section id="selected-publications" class="cv-section" aria-labelledby="cv-publications-heading">
+    <h2 id="cv-publications-heading">Selected Publications</h2>
+    <ol class="cv-publications">
+      {{ range $resume.publications }}
+      {{ $entry := . }}
+      {{ with site.GetPage .url }}
+      <li>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="cv-publication-meta">{{ .Params.publication_short | default .Params.publication }} · {{ $entry.year }}</p>
+      </li>
+      {{ end }}
+      {{ end }}
+    </ol>
+    <a class="cv-evidence research-text-link" href="{{ "/publications/" | relURL }}">All publications <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section id="technical-skills" class="cv-section" aria-labelledby="cv-skills-heading">
+    <h2 id="cv-skills-heading">Technical Skills</h2>
+    <dl class="cv-skills">
+      {{ range $resume.skills }}
+      <div>
+        <dt>{{ .label }}</dt>
+        <dd>{{ $page.RenderString (dict "display" "inline") .text }}</dd>
+      </div>
+      {{ end }}
+    </dl>
+  </section>
+
+  <section id="languages" class="cv-section" aria-labelledby="cv-languages-heading">
+    <h2 id="cv-languages-heading">Languages</h2>
+    <ul class="cv-languages">
+      {{ range $author.languages }}<li><strong>{{ .name }}</strong> — {{ .label }}</li>{{ end }}
+    </ul>
+  </section>
+</div>

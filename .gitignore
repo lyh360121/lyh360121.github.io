@@ -70,3 +70,7 @@ Desktop.ini
 
 *.log
 npm-debug.log*
+
+# Local document deliverables and rendering scratch files
+output/
+tmp/

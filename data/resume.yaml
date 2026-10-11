@@ -1,0 +1,46 @@
+summary: "Research spans motion prediction and reconstruction, transferable representations, and controllable traffic generation. Published machine learning studies and current simulation and sensing prototypes connect research methods with system development."
+
+areas:
+  - Spatiotemporal AI
+  - Generative Modeling
+  - Representation Learning
+
+highlights:
+  - title: "Trajectory reconstruction"
+    text: "Developed ProChunkFormer, a progressive chunked Transformer for recovering road-consistent trajectories from sparse and noisy GPS."
+    url: /publications/2025-liu-enhanced-trajectory-reconstruction/
+  - title: "Motion prediction analysis"
+    text: "Proposed SDA, a model-agnostic protocol attributing forecasting performance to historical motion, current state, and goal information."
+    url: /publications/2025-liu-sda/
+  - title: "Transferable representations"
+    text: "Combined LLM-derived semantics with heterogeneous graph learning for road embeddings and cross-city generalization."
+    url: /publications/2025-liu-a-generalizable-semantic/
+  - title: "Low-supervision learning"
+    text: "Combined LLM pseudo-labels and structural embeddings for cross-taxonomy alignment; evaluated with as little as 1% human-labeled data."
+    url: /publications/2025-liu-cross-taxonomy-label-alignment/
+
+projects:
+  - title: "Route-Conditioned Traffic Simulation"
+    status: "Ongoing research"
+    text: "Developing route-conditioned traffic generation and joint fine-tuning on SMART/CAT-K. Implemented recorded-scene adapters and offline intent-aware route allocation under feasibility and quota constraints; closed-loop evaluation is ongoing."
+    url: /projects/route-conditioned-traffic-simulation/
+  - title: "Autonomous Traffic Sensor Web (ATSW)"
+    status: "Working research prototype"
+    text: "Built a local GPS replay web workspace with heuristic adaptive reporting, Kalman receiver-state estimation, historical reconstruction, playback controls, decision logs, and JSON run export."
+    url: /projects/autonomous-traffic-sensor-web/
+
+skills:
+  - label: Methods
+    text: "Transformers, GNNs, LLM-based semantic supervision, conditional generation, Kalman filtering."
+  - label: Tools
+    text: "Python, PyTorch, FastAPI, React, TypeScript, SQLite."
+
+publications:
+  - url: /publications/2025-liu-sda/
+    year: 2026
+  - url: /publications/2025-liu-enhanced-trajectory-reconstruction/
+    year: 2025
+  - url: /publications/2025-liu-a-generalizable-semantic/
+    year: 2025
+  - url: /publications/2025-liu-cross-taxonomy-label-alignment/
+    year: 2025
