@@ -4,7 +4,7 @@ hugoblox:
     name: Yonghui Liu
     type: person
     tagline: Trajectory Modeling | Spatiotemporal AI | Urban Computing
-    description: "PhD candidate at KAIST working on spatiotemporal AI, generative models, and LLMs for autonomous driving and urban mobility."
+    description: "PhD candidate at KAIST studying how people and vehicles move, using generative models and LLMs for autonomous driving and urban mobility."
   theme:
     mode: system
     pack: default
