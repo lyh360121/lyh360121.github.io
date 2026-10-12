@@ -6,23 +6,24 @@ industry:
   research:
     title: "Doctoral Research | KAIST"
     bullets:
-      - "Developed Transformer-based trajectory reconstruction and evaluated the contributions of different inputs to motion prediction."
-      - "Developed road-network representations and label-alignment methods using language models and graph learning, supporting cross-city transfer and learning with limited labels."
+      - "Developed Transformer-based trajectory reconstruction and analyzed motion prediction inputs."
+      - "Developed language- and graph-based road representations and label alignment for cross-city transfer and learning with limited labels."
   projects:
     - title: "Generative Traffic Simulation"
       status: "Ongoing research"
       url: /projects/route-conditioned-traffic-simulation/
-      text: "Developing route-conditioned traffic generation with joint model fine-tuning for autonomous-driving simulation."
+      text: "Developing route-conditioned traffic generation and model fine-tuning for autonomous-driving simulation."
     - title: "Adaptive Sensing Web (ATSW)"
       status: "Research prototype"
       url: /projects/autonomous-traffic-sensor-web/
-      text: "Built a Python/FastAPI and React/TypeScript system for GPS replay, adaptive reporting, and receiver-state estimation."
+      text: "Built GPS replay, adaptive reporting, and receiver-state estimation with Python/FastAPI and React/TypeScript."
   skills:
     - label: Machine Learning
       text: "Deep Learning, Generative Modeling, Representation Learning."
     - label: Programming Languages
       text: "Python, C, JavaScript, TypeScript, MATLAB."
-  publication_record: "Four first-author papers in Knowledge-Based Systems, Communications in Transportation Research, and IEEE ITSC (2025-2026)."
+  # Indices in cv_publications: the four relevant first-author papers.
+  publication_refs: [1, 2, 5, 6]
 
 areas:
   - Spatiotemporal AI

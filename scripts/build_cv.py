@@ -1,7 +1,7 @@
 """Generate an academic CV from versioned research and author data.
 
 Usage: python scripts/build_cv.py --output static/uploads/Yonghui_Liu_CV.pdf
-Default output: output/pdf/Yonghui_Liu_Academic_CV.pdf
+Default output: static/uploads/Yonghui_Liu_CV.pdf (the website download).
 Dependencies: reportlab, PyYAML.
 """
 from __future__ import annotations
@@ -15,8 +15,7 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_RIGHT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+from pdf_style import register_document_fonts
 from reportlab.platypus import (
     CondPageBreak, HRFlowable, KeepTogether, Paragraph, SimpleDocTemplate,
     Spacer, Table, TableStyle,
@@ -24,22 +23,14 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--output", type=Path, default=ROOT / "output/pdf/Yonghui_Liu_Academic_CV.pdf")
+parser.add_argument("--output", type=Path, default=ROOT / "static/uploads/Yonghui_Liu_CV.pdf")
 args = parser.parse_args()
 out = args.output.resolve()
 out.parent.mkdir(parents=True, exist_ok=True)
 resume = yaml.safe_load((ROOT / "data/resume.yaml").read_text(encoding="utf-8"))
 author = yaml.safe_load((ROOT / "data/authors/me.yaml").read_text(encoding="utf-8"))
 
-font_dir = Path("C:/Windows/Fonts")
-font_files = {"CVSerif": "times.ttf", "CVSerifBold": "timesbd.ttf", "CVSerifItalic": "timesi.ttf"}
-if all((font_dir / f).exists() for f in font_files.values()):
-    for name, filename in font_files.items():
-        pdfmetrics.registerFont(TTFont(name, str(font_dir / filename)))
-    normal, bold, italic = "CVSerif", "CVSerifBold", "CVSerifItalic"
-    pdfmetrics.registerFontFamily(normal, normal=normal, bold=bold, italic=italic, boldItalic=bold)
-else:
-    normal, bold, italic = "Times-Roman", "Times-Bold", "Times-Italic"
+normal, bold, italic, bold_italic = register_document_fonts()
 
 INK = colors.HexColor("#161616")
 GRAY = colors.HexColor("#555555")
@@ -48,20 +39,20 @@ WIDTH = A4[0] - 112  # Document margins plus Platypus frame padding.
 base = dict(fontName=normal, fontSize=11, leading=14.1, textColor=INK)
 styles = {
     "body": ParagraphStyle("body", **base),
-    "name": ParagraphStyle("name", fontName=bold, fontSize=22, leading=26,
+    "name": ParagraphStyle("name", fontName=bold, fontSize=24, leading=29,
         textColor=INK, alignment=TA_CENTER, spaceAfter=3),
     "role": ParagraphStyle("role", **base, alignment=TA_CENTER, spaceAfter=3),
     "contact": ParagraphStyle("contact", fontName=normal, fontSize=10.5, leading=13.4,
         textColor=INK, alignment=TA_CENTER, spaceAfter=7),
     "topic": ParagraphStyle("topic", fontName=bold, fontSize=11, leading=14.1,
         textColor=INK, spaceBefore=3, spaceAfter=3, keepWithNext=True),
-    "section": ParagraphStyle("section", fontName=bold, fontSize=13.3, leading=16,
+    "section": ParagraphStyle("section", fontName=bold, fontSize=12.5, leading=16,
         textColor=INK, spaceBefore=9, spaceAfter=3, keepWithNext=True),
-    "entry": ParagraphStyle("entry", fontName=bold, fontSize=11.5, leading=14.3,
+    "entry": ParagraphStyle("entry", fontName=bold, fontSize=11, leading=14.3,
         textColor=INK, spaceAfter=3, keepWithNext=True),
     "date": ParagraphStyle("date", fontName=normal, fontSize=10.5, leading=14.3,
         textColor=INK, alignment=TA_RIGHT),
-    "status": ParagraphStyle("status", fontName=italic, fontSize=10.2, leading=13.4,
+    "status": ParagraphStyle("status", fontName=italic, fontSize=10.5, leading=13.4,
         textColor=GRAY, alignment=TA_RIGHT),
     "detail": ParagraphStyle("detail", **base, spaceAfter=3),
     "bullet": ParagraphStyle("bullet", **base, leftIndent=11, firstLineIndent=-9,
@@ -211,7 +202,7 @@ story.append(KeepTogether(conclusion))
 def decoration(canvas, doc):
     canvas.setTitle("Yonghui Liu - Academic Curriculum Vitae")
     canvas.setAuthor(name)
-    canvas.setSubject("Education, doctoral research, publications, and professional experience")
+    canvas.setSubject("Education, research, publications, conference presentations, and professional experience")
     canvas.setFillColor(GRAY)
     canvas.setFont(normal, 9)
     canvas.drawString(56, 26, "Yonghui Liu | Curriculum Vitae | October 2026")
@@ -222,7 +213,9 @@ def decoration(canvas, doc):
         canvas.setFont(normal, 10)
         canvas.drawRightString(A4[0]-56, A4[1]-30, "Academic Curriculum Vitae")
 
-doc = SimpleDocTemplate(str(out), pagesize=A4, leftMargin=50, rightMargin=50,
+pending = out.with_suffix(".building.pdf")
+doc = SimpleDocTemplate(str(pending), pagesize=A4, leftMargin=50, rightMargin=50,
     topMargin=39, bottomMargin=41, title="Yonghui Liu - Academic Curriculum Vitae", author=name)
 doc.build(story, onFirstPage=decoration, onLaterPages=decoration)
+pending.replace(out)
 print(out)

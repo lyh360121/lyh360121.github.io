@@ -16,11 +16,11 @@ from reportlab.lib.enums import TA_RIGHT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.utils import ImageReader
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     Flowable, HRFlowable, KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle,
 )
+
+from pdf_style import register_document_fonts
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
@@ -31,16 +31,9 @@ args = parser.parse_args()
 out = args.output.resolve()
 out.parent.mkdir(parents=True, exist_ok=True)
 author = yaml.safe_load((ROOT / 'data/authors/me.yaml').read_text(encoding='utf-8'))
-content = yaml.safe_load((ROOT / 'data/resume.yaml').read_text(encoding='utf-8'))['industry']
-
-font_dir = Path('C:/Windows/Fonts')
-if (font_dir / 'arial.ttf').exists() and (font_dir / 'arialbd.ttf').exists():
-    pdfmetrics.registerFont(TTFont('ResumeSans', str(font_dir / 'arial.ttf')))
-    pdfmetrics.registerFont(TTFont('ResumeSansBold', str(font_dir / 'arialbd.ttf')))
-    normal, bold = 'ResumeSans', 'ResumeSansBold'
-    pdfmetrics.registerFontFamily(normal, normal=normal, bold=bold)
-else:
-    normal, bold = 'Helvetica', 'Helvetica-Bold'
+resume_data = yaml.safe_load((ROOT / 'data/resume.yaml').read_text(encoding='utf-8'))
+content = resume_data['industry']
+normal, bold, italic, bold_italic = register_document_fonts()
 
 INK = colors.HexColor('#202932')
 ACCENT = colors.HexColor('#18344d')
@@ -49,22 +42,24 @@ WIDTH = A4[0] - 112
 styles = {
     'name': ParagraphStyle('name', fontName=bold, fontSize=24, leading=29,
         textColor=ACCENT, spaceAfter=5),
-    'headline': ParagraphStyle('headline', fontName=normal, fontSize=11, leading=14.8,
+    'headline': ParagraphStyle('headline', fontName=normal, fontSize=11, leading=14.1,
         textColor=INK, spaceAfter=4),
-    'role': ParagraphStyle('role', fontName=normal, fontSize=10.6, leading=14,
+    'role': ParagraphStyle('role', fontName=normal, fontSize=10.5, leading=13.4,
         textColor=GRAY, spaceAfter=7),
-    'contact': ParagraphStyle('contact', fontName=normal, fontSize=10.3, leading=14,
+    'contact': ParagraphStyle('contact', fontName=normal, fontSize=10.5, leading=13.4,
         textColor=INK, spaceAfter=2),
     'section': ParagraphStyle('section', fontName=bold, fontSize=12.5, leading=16,
-        textColor=ACCENT, spaceBefore=12, spaceAfter=4, keepWithNext=True),
-    'entry': ParagraphStyle('entry', fontName=bold, fontSize=11.1, leading=14.6,
+        textColor=ACCENT, spaceBefore=8, spaceAfter=3, keepWithNext=True),
+    'entry': ParagraphStyle('entry', fontName=bold, fontSize=11, leading=14.1,
         textColor=INK, spaceAfter=3, keepWithNext=True),
-    'date': ParagraphStyle('date', fontName=normal, fontSize=10.5, leading=14.6,
+    'date': ParagraphStyle('date', fontName=normal, fontSize=10.5, leading=14.1,
         textColor=GRAY, alignment=TA_RIGHT),
-    'body': ParagraphStyle('body', fontName=normal, fontSize=11, leading=14.8,
-        textColor=INK, spaceAfter=3),
-    'bullet': ParagraphStyle('bullet', fontName=normal, fontSize=11, leading=14.8,
-        textColor=INK, leftIndent=11, firstLineIndent=-10, spaceAfter=4),
+    'body': ParagraphStyle('body', fontName=normal, fontSize=11, leading=14.1,
+        textColor=INK, spaceAfter=2),
+    'bullet': ParagraphStyle('bullet', fontName=normal, fontSize=11, leading=14.1,
+        textColor=INK, leftIndent=11, firstLineIndent=-10, spaceAfter=3),
+    'publication': ParagraphStyle('publication', fontName=normal, fontSize=11, leading=14.1,
+        textColor=INK, leftIndent=13, firstLineIndent=-13, spaceAfter=3),
 }
 
 def text(value):
@@ -92,9 +87,11 @@ def row(left, right):
 
 story = []
 def section(label):
+    rule = HRFlowable(width='100%', thickness=.55, color=colors.HexColor('#b7c2cb'), spaceAfter=4)
+    rule.keepWithNext = True
     story.extend([
         p(label, 'section'),
-        HRFlowable(width='100%', thickness=.55, color=colors.HexColor('#b7c2cb'), spaceAfter=6),
+        rule,
     ])
 
 class Portrait(Flowable):
@@ -151,7 +148,7 @@ header.setStyle(TableStyle([
     ('TOPPADDING', (0, 0), (-1, -1), 0),
     ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
 ]))
-story.extend([header, Spacer(1, 12),
+story.extend([header, Spacer(1, 7),
     HRFlowable(width='100%', thickness=1.1, color=ACCENT, spaceAfter=2)])
 
 section('Education')
@@ -159,36 +156,47 @@ degrees = {'PhD': 'Ph.D. candidate', 'MS': 'M.S. in Ocean Engineering', 'BS': 'B
 for entry in author['education']:
     institution = 'KAIST' if entry['degree'] == 'PhD' else entry['institution'].split(' (')[0]
     pieces = [row(f'{text(institution)} | {text(degrees[entry["degree"]])}', date_range(entry))]
-    if entry['degree'] == 'PhD':
-        pieces.append(p('Cho Chun Shik Graduate School of Mobility'))
-    story.extend([KeepTogether(pieces), Spacer(1, 3)])
+    story.extend([KeepTogether(pieces), Spacer(1, 2)])
 
 section('Experience')
 research = content['research']
 pieces = [row(text(research['title']), date_range(author['education'][0]))]
 pieces.extend(p('- ' + text(bullet), 'bullet') for bullet in research['bullets'])
-story.extend([KeepTogether(pieces), Spacer(1, 7)])
+story.extend([KeepTogether(pieces), Spacer(1, 3)])
 for entry in author['experience']:
     if entry['org'] == 'Meituan':
         pieces = [row(f'{text(entry["role"])} | {text(entry["org"])}', date_range(entry))]
     else:
         pieces = [row(text(entry['role']), date_range(entry)), p(text(entry['org']))]
-    story.extend([KeepTogether(pieces), Spacer(1, 5)])
+    story.extend([KeepTogether(pieces), Spacer(1, 3)])
 
 section('Projects')
 for project in content['projects']:
     title = f'<link href="https://lyh360121.github.io{project["url"]}">{text(project["title"])}</link>'
     story.extend([
         KeepTogether([row(title, text(project['status'])), p('- ' + text(project['text']), 'bullet')]),
-        Spacer(1, 5),
+        Spacer(1, 3),
     ])
 
 section('Technical Skills')
 for entry in content['skills']:
     story.append(p(f'<b>{text(entry["label"])}:</b> {text(entry["text"])}'))
 
-section('Publications')
-story.append(p(f'<link href="https://lyh360121.github.io/publications/">{text(content["publication_record"])}</link>'))
+section('Selected Publications (First Author)')
+venue_names = {
+    'Knowledge-Based Systems': 'Knowledge-Based Systems (KBS)',
+    'Communications in Transportation Research': 'Communications in Transportation Research (COMMTR)',
+    '2025 IEEE 28th International Conference on Intelligent Transportation Systems (ITSC)': 'IEEE ITSC',
+}
+for number, reference in enumerate(content['publication_refs'], 1):
+    paper = resume_data['cv_publications'][reference - 1]
+    if paper['authors'][0] != name:
+        raise ValueError('Selected publication must be first-authored by the resume owner.')
+    title = f'<link href="https://doi.org/{escape(paper["doi"])}">{text(paper["title"])}</link>'
+    venue = venue_names.get(paper['venue'], paper['venue'])
+    story.append(KeepTogether([
+        p(f'{number}. {title}<br/><i>{text(venue)}</i>, {paper["year"]}.', 'publication')
+    ]))
 
 pending = out.with_suffix('.building.pdf')
 doc = SimpleDocTemplate(str(pending), pagesize=A4, leftMargin=50, rightMargin=50,
