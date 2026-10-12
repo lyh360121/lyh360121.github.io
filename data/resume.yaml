@@ -18,10 +18,12 @@ industry:
       url: /projects/autonomous-traffic-sensor-web/
       text: "Built GPS replay, adaptive reporting, and receiver-state estimation with Python/FastAPI and React/TypeScript."
   skills:
-    - label: Machine Learning
-      text: "Deep Learning, Generative Modeling, Representation Learning."
     - label: Programming Languages
       text: "Python, C, JavaScript, TypeScript, MATLAB."
+    - label: Models
+      text: "Transformers, Graph Neural Networks (GNNs)."
+    - label: Methods
+      text: "Sequence Modeling, LLM Prompting, Model Fine-Tuning, Kalman Filtering."
   # Indices in cv_publications: the four relevant first-author papers.
   publication_refs: [1, 2, 5, 6]
 
@@ -61,12 +63,12 @@ projects:
       - "Built a FastAPI backend and React/TypeScript interface for inspecting receiver trajectories, reporting decisions, and historical reconstruction."
 
 skills:
-  - label: Machine Learning
-    text: "Deep Learning, Generative Modeling, Representation Learning."
-  - label: Model Architectures
-    text: "Transformers, Graph Neural Networks."
   - label: Programming Languages
     text: "Python, C, JavaScript, TypeScript, MATLAB."
+  - label: Models
+    text: "Transformers, Graph Neural Networks (GNNs)."
+  - label: Methods
+    text: "Sequence Modeling, LLM Prompting, Model Fine-Tuning, Kalman Filtering."
 
 # Reports are separate from archival publications; repeated files are not new events.
 # Entries use venue-specific titles and confirmed presentation records.
