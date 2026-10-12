@@ -62,23 +62,6 @@ experience:
     org: "Advanced Institute of Information Technology, Peking University"
     start: "2020-04-22"
     end: "2020-10-21"
-skills:
-  - name: "Technical Skills"
-    items:
-      - label: "Python"
-        level: 5
-      - label: "Machine Learning"
-        level: 5
-      - label: "Cloud Computing"
-        level: 4
-  - name: "Research & Communication"
-    items:
-      - label: "Academic Writing"
-        level: 5
-      - label: "Conference Presentations"
-        level: 4
-      - label: "Grant Proposals"
-        level: 4
 languages:
   - name: "Chinese"
     level: 5

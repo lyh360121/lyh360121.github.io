@@ -1,4 +1,4 @@
-"""Generate the two-page academic CV from versioned research and author data.
+"""Generate an academic CV from versioned research and author data.
 
 Usage: python scripts/build_cv.py --output static/uploads/Yonghui_Liu_CV.pdf
 Default output: output/pdf/Yonghui_Liu_Academic_CV.pdf
@@ -18,7 +18,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
-    HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate,
+    CondPageBreak, HRFlowable, KeepTogether, Paragraph, SimpleDocTemplate,
     Spacer, Table, TableStyle,
 )
 
@@ -77,10 +77,14 @@ def p(value, style="body"):
     return Paragraph(value, styles[style])
 
 story = []
-def section(label):
-    story.extend([
+def section(label, target=None):
+    if target is None:
+        target = story
+    rule = HRFlowable(width="100%", thickness=.5, color=RULE, spaceAfter=5)
+    rule.keepWithNext = True
+    target.extend([
         p(text(label), "section"),
-        HRFlowable(width="100%", thickness=.5, color=RULE, spaceAfter=5),
+        rule,
     ])
 
 def row(left, right, right_style="date"):
@@ -112,7 +116,6 @@ story.extend([
     p(" &nbsp;|&nbsp; ".join(contact), "contact"),
 ])
 
-thesis_title = "Compression-Reconstruction Co-Design for Urban Mobility Trajectories"
 doctoral_record = next(entry for entry in author["education"] if entry["degree"] == "PhD")
 
 section("Education")
@@ -123,8 +126,6 @@ for entry in author["education"]:
     if entry.get("summary"):
         detail += ", " + entry["summary"]
     pieces = [row(text(institution), date_range(entry)), p(text(detail), "detail")]
-    if entry["degree"] == "PhD":
-        pieces.append(p(f'<b>Doctoral thesis:</b> <i>{text(thesis_title)}</i> (in progress).', "detail"))
     story.append(KeepTogether(pieces))
     story.append(Spacer(1, 2))
 
@@ -153,7 +154,9 @@ for project in resume["projects"]:
     story.append(KeepTogether(pieces))
     story.append(Spacer(1, 2))
 
-story.append(PageBreak())
+# Give a new publications section room for its heading and opening citations.
+# Shorter content can still flow onto the same page; no fixed page count is assumed.
+story.append(CondPageBreak(150))
 section("Publications")
 for group in ("Journal Articles", "Conference Papers"):
     story.append(p(group, "entry"))
@@ -165,20 +168,45 @@ for group in ("Journal Articles", "Conference Papers"):
         title = f'<link href="https://doi.org/{paper["doi"]}">{text(paper["title"])}</link>'
         citation = f'{index}. {author_text}. {title}. <i>{text(paper["venue"])}</i>, '
         citation += f'{text(paper["detail"])}, {paper["year"]}.'
-        story.append(p(citation, "citation"))
+        story.append(KeepTogether([p(citation, "citation")]))
 
-section("Professional Experience")
+presentations = resume.get("conference_presentations", [])
+presentation_blocks = []
+for entry in presentations:
+    details = [entry.get(key) for key in ("format", "date", "location") if entry.get(key)]
+    pieces = [
+        p(text(entry["title"]), "entry"),
+        p(f'<i>{text(entry["venue"])}</i>. {text(" | ".join(details))}.', "detail"),
+    ]
+    if entry.get("note"):
+        pieces.append(p(f'<i>{text(entry["note"].rstrip("."))}.</i>', "detail"))
+    pieces.append(Spacer(1, 4))
+    presentation_blocks.append(pieces)
+
+if presentations:
+    section("Selected Conference Presentations")
+    # Keep the final presentations with the concluding background sections.
+    # This prevents a short last page containing only skills and languages.
+    for pieces in presentation_blocks[:-2]:
+        story.append(KeepTogether(pieces))
+
+conclusion = []
+for pieces in presentation_blocks[-2:]:
+    conclusion.extend(pieces)
+
+section("Professional Experience", conclusion)
 for entry in author["experience"]:
     pieces = [row(text(entry["role"]), date_range(entry)), p(text(entry["org"]), "detail")]
-    story.append(KeepTogether(pieces))
-    story.append(Spacer(1, 2))
+    conclusion.extend(pieces)
+    conclusion.append(Spacer(1, 2))
 
-section("Technical Skills")
+section("Technical Skills", conclusion)
 for skill in resume["skills"]:
-    story.append(p(f'<b>{text(skill["label"])}:</b> {text(skill["text"])}', "detail"))
-section("Languages")
-story.append(p("; ".join(f'<b>{text(entry["name"])}</b>: {text(entry["label"])}'
+    conclusion.append(p(f'<b>{text(skill["label"])}:</b> {text(skill["text"])}', "detail"))
+section("Languages", conclusion)
+conclusion.append(p("; ".join(f'<b>{text(entry["name"])}</b>: {text(entry["label"])}'
     for entry in author["languages"])))
+story.append(KeepTogether(conclusion))
 
 def decoration(canvas, doc):
     canvas.setTitle("Yonghui Liu - Academic Curriculum Vitae")
@@ -187,7 +215,7 @@ def decoration(canvas, doc):
     canvas.setFillColor(GRAY)
     canvas.setFont(normal, 9)
     canvas.drawString(56, 26, "Yonghui Liu | Curriculum Vitae | October 2026")
-    canvas.drawRightString(A4[0]-56, 26, f"{doc.page} / 2")
+    canvas.drawRightString(A4[0]-56, 26, str(doc.page))
     if doc.page > 1:
         canvas.setFont(bold, 11)
         canvas.drawString(56, A4[1]-30, name)

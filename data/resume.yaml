@@ -18,10 +18,10 @@ industry:
       url: /projects/autonomous-traffic-sensor-web/
       text: "Built a Python/FastAPI and React/TypeScript system for GPS replay, adaptive reporting, and receiver-state estimation."
   skills:
-    - label: Tools
-      text: "Python, PyTorch, TypeScript, React, FastAPI, SQLite."
-    - label: Methods
-      text: "Sequence modeling, graph representation learning, language-model supervision, conditional generation."
+    - label: Machine Learning
+      text: "Deep Learning, Generative Modeling, Representation Learning."
+    - label: Programming Languages
+      text: "Python, C, JavaScript, TypeScript, MATLAB."
   publication_record: "Four first-author papers in Knowledge-Based Systems, Communications in Transportation Research, and IEEE ITSC (2025-2026)."
 
 areas:
@@ -60,10 +60,52 @@ projects:
       - "Built a FastAPI backend and React/TypeScript interface for inspecting receiver trajectories, reporting decisions, and historical reconstruction."
 
 skills:
-  - label: Methods
-    text: "Transformers, GNNs, LLM-based semantic supervision, conditional generation, Kalman filtering."
-  - label: Tools
-    text: "Python, PyTorch, FastAPI, React, TypeScript, SQLite."
+  - label: Machine Learning
+    text: "Deep Learning, Generative Modeling, Representation Learning."
+  - label: Model Architectures
+    text: "Transformers, Graph Neural Networks."
+  - label: Programming Languages
+    text: "Python, C, JavaScript, TypeScript, MATLAB."
+
+# Reports are separate from archival publications; repeated files are not new events.
+# Entries use venue-specific titles and confirmed presentation records.
+conference_presentations:
+  - title: "Enhanced Trajectory Reconstruction from Sparse and Noisy GPS Data: A Progressive Chunked Transformer (ProChunkFormer) Approach"
+    venue: 15th Asia-Pacific Conference on Transportation and the Environment (APTE)
+    date: July 2026
+    location: Jeju, South Korea
+    format: Presentation
+  - title: Cross-Taxonomy Label Alignment Across Transportation Datasets Using Prompts with Large Language Models
+    venue: 29th International Conference of Hong Kong Society for Transportation Studies (HKSTS)
+    date: December 9, 2025
+    location: Hong Kong
+    format: Poster
+  - title: Generalizable Semantic-aware Road Network Representation Learning
+    venue: 20th ITS Asia-Pacific Forum
+    date: May 2025
+    location: Suwon, South Korea
+    format: E-poster
+  - title: "Enhancing Trajectory Recovery for Long Interval Time: A Hierarchical Transformer Approach"
+    venue: 2024 Fall Conference of the Korean Society of Intelligent Transport Systems (KITS)
+    date: October 2024
+    location: Gangneung, South Korea
+    format: Oral presentation
+  - title: Shortest Path Enhanced Trajectory Recovery from Trip Across Long Interval Time
+    venue: 2024 Spring Conference of the Korean Society of Intelligent Transport Systems (KITS)
+    date: April 26, 2024
+    location: Jeju, South Korea
+    format: Presentation
+  - title: "Investigation of Personal Mobility Trip Characteristics Using Operational Data: Focusing on Sejong City"
+    venue: 2023 Fall Conference of the Korean Society of Intelligent Transport Systems (KITS)
+    date: November 2023
+    location: Jeju, South Korea
+    format: Coauthored presentation
+    note: Presented by a coauthor
+  - title: Analytical Modeling of Resonant Converters in Frequency Domain for Wireless Power Transfer
+    venue: Joint Conference of the Korean Society of Transportation and Korea Planning Association
+    date: October 12, 2023
+    location: Busan, South Korea
+    format: Oral presentation
 
 publications:
   - url: /publications/2025-liu-sda/

@@ -161,8 +161,11 @@
 .cv-publications h3 { font-size: .95rem; line-height: 1.5; font-weight: 600; margin: 0 0 .35rem; }
 .cv-publications h3 a { color: var(--research-ink); }
 .cv-publication-meta { color: var(--research-muted); font-size: .8rem; line-height: 1.5; margin: 0; }
+.cv-presentations { list-style: none; padding: 0; margin: 0; }
+.cv-presentations li + li { margin-top: 1.1rem; }
+.cv-presentations h3 { font-size: .95rem; line-height: 1.5; font-weight: 600; margin: 0 0 .35rem; }
 .cv-skills { margin: 0; }
-.cv-skills > div { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 1rem; }
+.cv-skills > div { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 1rem; }
 .cv-skills > div + div { margin-top: .9rem; }
 .cv-skills dt { font-size: .9rem; font-weight: 650; }
 .cv-skills dd { margin: 0; color: var(--research-muted); font-size: .9rem; line-height: 1.6; }

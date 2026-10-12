@@ -35,6 +35,7 @@
     <a href="#research-contributions">Research contributions</a>
     <a href="#current-projects">Current projects</a>
     <a href="#selected-publications">Selected publications</a>
+    {{ with $resume.conference_presentations }}<a href="#conference-presentations">Conference presentations</a>{{ end }}
     <a href="#technical-skills">Technical skills</a>
     <a href="#languages">Languages</a>
   </nav>
@@ -109,6 +110,21 @@
     </ol>
     <a class="cv-evidence research-text-link" href="{{ "/publications/" | relURL }}">All publications <span aria-hidden="true">→</span></a>
   </section>
+
+  {{ with $resume.conference_presentations }}
+  <section id="conference-presentations" class="cv-section" aria-labelledby="cv-presentations-heading">
+    <h2 id="cv-presentations-heading">Selected Conference Presentations</h2>
+    <ul class="cv-presentations">
+      {{ range . }}
+      <li>
+        <h3>{{ .title }}</h3>
+        <p class="cv-publication-meta">{{ .venue }}</p>
+        <p class="cv-publication-meta">{{ .format }} · {{ .location }} · {{ .date }}{{ with .note }} · {{ . }}{{ end }}</p>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 
   <section id="technical-skills" class="cv-section" aria-labelledby="cv-skills-heading">
     <h2 id="cv-skills-heading">Technical Skills</h2>

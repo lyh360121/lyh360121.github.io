@@ -1,6 +1,6 @@
 ---
 title: 'Experience & CV'
-summary: 'Professional experience, selected research and engineering projects, and the downloadable academic CV of Yonghui Liu.'
+summary: 'Professional experience, research projects, publications, conference presentations, and the downloadable academic CV of Yonghui Liu.'
 date: 2026-10-12T00:00:00+09:00
 lastmod: 2026-10-12T00:00:00+09:00
 type: landing
