@@ -12,7 +12,7 @@ industry:
     - title: "Generative Traffic Simulation"
       status: "Ongoing research"
       url: /projects/route-conditioned-traffic-simulation/
-      text: "Developing route-conditioned traffic generation and model fine-tuning for autonomous-driving simulation."
+      text: "Developing controllable traffic generation with a pretrained motion model and learned route conditioning."
     - title: "Adaptive Sensing Web (ATSW)"
       status: "Research prototype"
       url: /projects/autonomous-traffic-sensor-web/
@@ -20,10 +20,12 @@ industry:
   skills:
     - label: Programming Languages
       text: "Python, C, JavaScript, TypeScript, MATLAB."
-    - label: Models
-      text: "Transformers, Graph Neural Networks (GNNs)."
-    - label: Methods
-      text: "Sequence Modeling, LLM Prompting, Model Fine-Tuning, Kalman Filtering."
+    - label: Machine Learning
+      text: "PyTorch, Deep Learning, Transformers, Graph Neural Networks."
+    - label: Model Development
+      text: "Data Preprocessing, Model Training, Experimental Evaluation."
+    - label: Software Engineering
+      text: "API Development (FastAPI), Reproducible Experiment Pipelines."
   # Indices in cv_publications: the four relevant first-author papers.
   publication_refs: [1, 2, 5, 6]
 
@@ -49,11 +51,11 @@ highlights:
 projects:
   - title: "Route-Conditioned Traffic Simulation"
     status: "Ongoing research"
-    text: "Developing route-conditioned traffic generation and joint fine-tuning on SMART/CAT-K. Implemented recorded-scene adapters and offline intent-aware route allocation under feasibility and quota constraints; closed-loop evaluation is ongoing."
+    text: "Developing route-conditioned traffic generation on SMART/CAT-K with a frozen pretrained motion model and trainable path-encoding and FiLM modules. Implemented recorded-scene data adapters and closed-loop evaluation; policy-optimization experiments are ongoing."
     url: /projects/route-conditioned-traffic-simulation/
     bullets:
-      - "Developing route-conditioned traffic generation on SMART/CAT-K by jointly fine-tuning a route encoder, conditioning branch, and motion decoder."
-      - "Implemented recorded-scene initialization and offline route allocation under feasibility and quota constraints; route-control evaluation and integration are ongoing."
+      - "Training path-encoding and FiLM conditioning modules on a frozen pretrained SMART motion model for route-conditioned traffic generation."
+      - "Implemented recorded-scene data adapters and closed-loop evaluation; policy-optimization experiments for route following are ongoing."
   - title: "Autonomous Traffic Sensor Web (ATSW)"
     status: "Working research prototype"
     text: "Built a local GPS replay web workspace with heuristic adaptive reporting, Kalman receiver-state estimation, historical reconstruction, playback controls, decision logs, and JSON run export."
@@ -65,10 +67,12 @@ projects:
 skills:
   - label: Programming Languages
     text: "Python, C, JavaScript, TypeScript, MATLAB."
-  - label: Models
-    text: "Transformers, Graph Neural Networks (GNNs)."
-  - label: Methods
-    text: "Sequence Modeling, LLM Prompting, Model Fine-Tuning, Kalman Filtering."
+  - label: Machine Learning
+    text: "PyTorch, Deep Learning, Transformers, Graph Neural Networks."
+  - label: Model Development
+    text: "Data Preprocessing, Model Training, Experimental Evaluation."
+  - label: Software Engineering
+    text: "API Development (FastAPI), Reproducible Experiment Pipelines."
 
 # Reports are separate from archival publications; repeated files are not new events.
 # Entries use venue-specific titles and confirmed presentation records.

@@ -1,7 +1,7 @@
 ---
 title: "Route-Conditioned Traffic Simulation"
 date: 2026-10-11
-lastmod: 2026-10-11
+lastmod: 2026-10-12T00:00:00+09:00
 draft: false
 project_kind: system
 current: true
@@ -24,7 +24,7 @@ I am developing a research system that connects **route-conditioned traffic gene
 
 ## What I Am Developing
 
-- **Route conditioning and joint fine-tuning.** An ordered map path provides a spatial route condition. A route encoder and feature-wise conditioning branch are trained together with the SMART motion decoder. The condition leaves timing and intermediate motion to the generated interaction.
+- **Route conditioning on a frozen motion model.** An ordered map path provides a spatial route condition. The current training scope keeps the pretrained SMART model frozen and learns a path encoder and FiLM conditioning modules. The condition leaves timing and intermediate motion to the generated interaction.
 - **Recorded-scene execution.** Scene adapters initialize the participant group from observed history and provide current recorded signal states. A rolling-history execution kernel supports sampling, task termination, and reproducible evaluation.
 - **Intent-aware allocation.** An independent offline module assigns participants to routes under feasibility and quota constraints, prioritizing fewer reassignments from an explicitly supplied baseline. Historical motion, lane compatibility, and uncontrolled predictions are being examined as evidence for that baseline.
 - **Inspectable experiments.** Saved trajectories and model identities support comparisons between uncontrolled motion, an original route or reference, and an alternative condition. Successful, incomplete, and degraded outcomes remain visible in the evaluation.
@@ -37,7 +37,7 @@ The system builds on the open-source **SMART** and **CAT-K** traffic modeling fo
 
 Earlier prototypes produced saved three-way replays using the same initial scene and random seed while changing only the target participant's timed reference. These replays help inspect whether motion changes with the condition, including how surrounding participants respond. Their reference-following errors describe those historical experiments.
 
-The current research uses **map routes without prescribed arrival times** and joint fine-tuning of route conditioning and motion generation. Route completion, preservation of already compatible behavior, and interaction quality are evaluated separately. Training and evaluation are ongoing; stable route control has yet to be established. The offline allocation module is implemented, with integration contingent on a validated route executor.
+The current research uses **map routes without prescribed arrival times**, a frozen pretrained motion model, and trainable route-conditioning modules. Supervised conditioning experiments have been run, and policy-optimization experiments using closed-loop route and driving-quality feedback are ongoing. Route completion, preservation of already compatible behavior, and interaction quality are evaluated separately; stable route control has yet to be established. The existing offline allocation module is separate from the current training scope, with integration contingent on a validated route executor.
 
 ## Evaluation
 
