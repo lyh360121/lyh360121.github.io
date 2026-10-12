@@ -1,4 +1,4 @@
-summary: "Research spans motion prediction and reconstruction, transferable representations, and controllable traffic generation. Published machine learning studies and current simulation and sensing prototypes connect research methods with system development."
+summary: "Doctoral research in trajectory modeling and representation learning, with current projects in generative traffic simulation and adaptive sensing."
 
 areas:
   - Spatiotemporal AI
@@ -7,16 +7,16 @@ areas:
 
 highlights:
   - title: "Trajectory reconstruction"
-    text: "Developed ProChunkFormer, a progressive chunked Transformer for recovering road-consistent trajectories from sparse and noisy GPS."
+    text: "Developed ProChunkFormer for sparse GPS reconstruction. On Porto taxi data at 240-second sampling intervals, reduced runtime by 20.7% and road-network MAE by 25.1% versus an autoregressive Transformer."
     url: /publications/2025-liu-enhanced-trajectory-reconstruction/
   - title: "Motion prediction analysis"
-    text: "Proposed SDA, a model-agnostic protocol attributing forecasting performance to historical motion, current state, and goal information."
+    text: "Designed SDA to measure the contributions of historical motion, current state, and goal information. Evaluated LSTM and Transformer forecasting on Porto taxi and ETH pedestrian data."
     url: /publications/2025-liu-sda/
   - title: "Transferable representations"
-    text: "Combined LLM-derived semantics with heterogeneous graph learning for road embeddings and cross-city generalization."
+    text: "Combined LLM-derived semantics with heterogeneous graph learning. Achieved 0.6766 F1 in Porto-to-Lisbon transfer without retraining, compared with 0.6968 F1 for a Lisbon-trained model."
     url: /publications/2025-liu-a-generalizable-semantic/
   - title: "Low-supervision learning"
-    text: "Combined LLM pseudo-labels and structural embeddings for cross-taxonomy alignment; evaluated with as little as 1% human-labeled data."
+    text: "Combined LLM pseudo-labels with structural embeddings for cross-taxonomy alignment. With 1% human-labeled data, achieved 51.3% accuracy versus 40.0% for direct supervised training."
     url: /publications/2025-liu-cross-taxonomy-label-alignment/
 
 projects:
@@ -24,10 +24,16 @@ projects:
     status: "Ongoing research"
     text: "Developing route-conditioned traffic generation and joint fine-tuning on SMART/CAT-K. Implemented recorded-scene adapters and offline intent-aware route allocation under feasibility and quota constraints; closed-loop evaluation is ongoing."
     url: /projects/route-conditioned-traffic-simulation/
+    bullets:
+      - "Developing route-conditioned traffic generation on SMART/CAT-K by jointly fine-tuning a route encoder, conditioning branch, and motion decoder."
+      - "Implemented recorded-scene initialization and offline route allocation under feasibility and quota constraints; route-control evaluation and integration are ongoing."
   - title: "Autonomous Traffic Sensor Web (ATSW)"
     status: "Working research prototype"
     text: "Built a local GPS replay web workspace with heuristic adaptive reporting, Kalman receiver-state estimation, historical reconstruction, playback controls, decision logs, and JSON run export."
     url: /projects/autonomous-traffic-sensor-web/
+    bullets:
+      - "Implemented a source-receiver replay system with adaptive GPS reporting and Kalman estimation, supporting policy comparison using position error and report counts."
+      - "Built a FastAPI backend and React/TypeScript interface for inspecting receiver trajectories, reporting decisions, and historical reconstruction."
 
 skills:
   - label: Methods
@@ -44,3 +50,66 @@ publications:
     year: 2025
   - url: /publications/2025-liu-cross-taxonomy-label-alignment/
     year: 2025
+
+# Quantitative statements use the published experiment conditions, not general speed claims.
+cv_research:
+  - title: Efficient trajectory modeling
+    items:
+      - label: ProChunkFormer
+        text: "Developed a progressive chunked Transformer for sparse GPS reconstruction. On Porto taxi data at 240-second sampling intervals, reduced runtime by 20.7% and road-network MAE by 25.1% versus an autoregressive Transformer."
+        reference: 2
+      - label: SDA
+        text: "Designed a controlled-gating protocol to quantify history, state, and goal-prior contributions in LSTM/Transformer forecasting on Porto taxi and ETH pedestrian data."
+        reference: 1
+  - title: Representation learning with language and graph models
+    items:
+      - label: Road-network representations
+        text: "Combined LLM-derived semantics with heterogeneous graph learning. Achieved 0.6766 F1 in Porto-to-Lisbon transfer without retraining, versus 0.6968 F1 for a Lisbon-trained model."
+        reference: 6
+      - label: Cross-taxonomy alignment
+        text: "Combined LLM pseudo-labels with structural embeddings. With 1% human-labeled data, achieved 51.3% accuracy versus 40.0% for direct supervised training."
+        reference: 5
+
+cv_publications:
+  - group: Journal Articles
+    authors: [Yonghui Liu, Inhi Kim]
+    title: Sequential decomposition and attribution for trajectory forecasting
+    venue: Knowledge-Based Systems
+    detail: "335:115204"
+    year: 2026
+    doi: 10.1016/j.knosys.2025.115204
+  - group: Journal Articles
+    authors: [Yonghui Liu, Qian Li, Inhi Kim]
+    title: "Enhanced trajectory reconstruction from sparse and noisy GPS data: A progressive chunked transformer approach"
+    venue: Communications in Transportation Research
+    detail: "5:100200"
+    year: 2025
+    doi: 10.1016/j.commtr.2025.100200
+  - group: Journal Articles
+    authors: [Hulong Zeng, Pengcheng Jiao, Yonghui Liu, Ujjwal Karki, Fang Z. Peng]
+    title: "Analytical modeling of resonant converters in frequency domain for wireless power transfer: Continuous current mode (CCM) operation"
+    venue: Energy
+    detail: "246:123371"
+    year: 2022
+    doi: 10.1016/j.energy.2022.123371
+  - group: Journal Articles
+    authors: [Thomas Pähtz, Yonghui Liu, Yuezhang Xia, Peng Hu, Zhiguo He, Katharina Tholen]
+    title: Unified model of sediment transport threshold and rate across weak and intense subaqueous bedload, windblown sand, and windblown snow
+    venue: "Journal of Geophysical Research: Earth Surface"
+    detail: "126(4):e2020JF005859"
+    year: 2021
+    doi: 10.1029/2020JF005859
+  - group: Conference Papers
+    authors: [Yonghui Liu, Inhi Kim]
+    title: Cross-Taxonomy Label Alignment in Transportation Networks With Prompt-Driven Large Language Models
+    venue: "2025 IEEE 28th International Conference on Intelligent Transportation Systems (ITSC)"
+    detail: "pp. 1724-1729"
+    year: 2025
+    doi: 10.1109/ITSC60802.2025.11423624
+  - group: Conference Papers
+    authors: [Yonghui Liu, Inhi Kim]
+    title: A Generalizable Semantic Graph Learning Framework for Road Network Representation
+    venue: "2025 IEEE 28th International Conference on Intelligent Transportation Systems (ITSC)"
+    detail: "pp. 720-725"
+    year: 2025
+    doi: 10.1109/ITSC60802.2025.11423186
