@@ -11,12 +11,15 @@
   <header class="cv-header">
     <div class="cv-heading">
       <p class="research-eyebrow">AI Research &amp; Engineering</p>
-      <h1>Experience &amp; CV</h1>
+      <h1>Experience &amp; Resume</h1>
       <p class="cv-role">{{ $author.role }} · KAIST · Former Software Engineer at Meituan</p>
     </div>
     <div class="cv-actions">
       {{ with $block.content.download_url }}
-      <a class="research-button" href="{{ . | relURL }}" download>Download CV (PDF) <span aria-hidden="true">↓</span></a>
+      <a class="research-button" href="{{ . | relURL }}" download>Download Resume (PDF) <span aria-hidden="true">↓</span></a>
+      {{ end }}
+      {{ with $block.content.academic_cv_url }}
+      <a class="research-text-link" href="{{ . | relURL }}" download>Academic CV (PDF) <span aria-hidden="true">↓</span></a>
       {{ end }}
       {{ with $email }}<a class="research-text-link" href="{{ . | safeURL }}">Email me</a>{{ end }}
     </div>
@@ -29,7 +32,7 @@
   </ul>
   {{ end }}
 
-  <nav class="cv-section-nav" aria-label="CV sections">
+  <nav class="cv-section-nav" aria-label="Resume sections">
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#research-contributions">Research contributions</a>

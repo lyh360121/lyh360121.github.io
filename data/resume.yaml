@@ -1,5 +1,29 @@
 summary: "Doctoral research in trajectory modeling and representation learning, with current projects in generative traffic simulation and adaptive sensing."
 
+# Industry resume: a curated summary, separate from the academic CV below.
+industry:
+  headline: "Machine Learning Research & Software Engineering"
+  research:
+    title: "Doctoral Research | KAIST"
+    bullets:
+      - "Developed Transformer-based trajectory reconstruction and evaluated the contributions of different inputs to motion prediction."
+      - "Developed road-network representations and label-alignment methods using language models and graph learning, supporting cross-city transfer and learning with limited labels."
+  projects:
+    - title: "Generative Traffic Simulation"
+      status: "Ongoing research"
+      url: /projects/route-conditioned-traffic-simulation/
+      text: "Developing route-conditioned traffic generation with joint model fine-tuning for autonomous-driving simulation."
+    - title: "Adaptive Sensing Web (ATSW)"
+      status: "Research prototype"
+      url: /projects/autonomous-traffic-sensor-web/
+      text: "Built a Python/FastAPI and React/TypeScript system for GPS replay, adaptive reporting, and receiver-state estimation."
+  skills:
+    - label: Tools
+      text: "Python, PyTorch, TypeScript, React, FastAPI, SQLite."
+    - label: Methods
+      text: "Sequence modeling, graph representation learning, language-model supervision, conditional generation."
+  publication_record: "Four first-author papers in Knowledge-Based Systems, Communications in Transportation Research, and IEEE ITSC (2025-2026)."
+
 areas:
   - Spatiotemporal AI
   - Generative Modeling

@@ -1,7 +1,8 @@
-"""Generate the two-page CV from versioned research and author data.
+"""Generate the two-page academic CV from versioned research and author data.
 
 Usage: python scripts/build_cv.py --output static/uploads/Yonghui_Liu_CV.pdf
-Dependencies: reportlab, PyYAML. Optional --phone is for a private application copy.
+Default output: output/pdf/Yonghui_Liu_Academic_CV.pdf
+Dependencies: reportlab, PyYAML.
 """
 from __future__ import annotations
 
@@ -23,8 +24,7 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--output", type=Path, default=ROOT / "output/pdf/Yonghui_Liu_Resume.pdf")
-parser.add_argument("--phone", default="")
+parser.add_argument("--output", type=Path, default=ROOT / "output/pdf/Yonghui_Liu_Academic_CV.pdf")
 args = parser.parse_args()
 out = args.output.resolve()
 out.parent.mkdir(parents=True, exist_ok=True)
@@ -53,8 +53,8 @@ styles = {
     "role": ParagraphStyle("role", **base, alignment=TA_CENTER, spaceAfter=3),
     "contact": ParagraphStyle("contact", fontName=normal, fontSize=10.5, leading=13.4,
         textColor=INK, alignment=TA_CENTER, spaceAfter=7),
-    "focus": ParagraphStyle("focus", fontName=italic, fontSize=11, leading=14.1,
-        textColor=INK, alignment=TA_CENTER, spaceAfter=5),
+    "topic": ParagraphStyle("topic", fontName=bold, fontSize=11, leading=14.1,
+        textColor=INK, spaceBefore=3, spaceAfter=3, keepWithNext=True),
     "section": ParagraphStyle("section", fontName=bold, fontSize=13.3, leading=16,
         textColor=INK, spaceBefore=9, spaceAfter=3, keepWithNext=True),
     "entry": ParagraphStyle("entry", fontName=bold, fontSize=11.5, leading=14.3,
@@ -106,40 +106,14 @@ email_url = next(link["url"] for link in author["links"] if link["url"].startswi
 email = email_url.removeprefix("mailto:")
 contact = [f'<link href="{escape(email_url)}">{text(email)}</link>',
     '<link href="https://lyh360121.github.io/">lyh360121.github.io</link>']
-if args.phone:
-    contact.append(text(args.phone))
 story.extend([
     p(text(name), "name"),
     p("Ph.D. Candidate, KAIST", "role"),
     p(" &nbsp;|&nbsp; ".join(contact), "contact"),
-    p("Machine Learning &nbsp;|&nbsp; Generative Modeling &nbsp;|&nbsp; Representation Learning", "focus"),
 ])
 
-section("Research Contributions")
-papers = resume["cv_publications"]
-for research in resume["cv_research"]:
-    pieces = [p(text(research["title"]), "entry")]
-    for item in research["items"]:
-        number = item["reference"]
-        doi = papers[number - 1]["doi"]
-        pieces.append(p(f'- <b>{text(item["label"])}.</b> {text(item["text"])} '
-            f'<link href="https://doi.org/{doi}">[{number}]</link>', "bullet"))
-    story.append(KeepTogether(pieces))
-    story.append(Spacer(1, 3))
-
-section("Current Research Projects")
-for project in resume["projects"]:
-    title = f'<link href="https://lyh360121.github.io{project["url"]}">{text(project["title"])}</link>'
-    pieces = [row(title, text(project["status"]), "status")]
-    pieces.extend(p("- " + text(bullet), "bullet") for bullet in project["bullets"])
-    story.append(KeepTogether(pieces))
-    story.append(Spacer(1, 2))
-
-section("Professional Experience")
-for entry in author["experience"]:
-    pieces = [row(text(entry["role"]), date_range(entry)), p(text(entry["org"]), "detail")]
-    story.append(KeepTogether(pieces))
-    story.append(Spacer(1, 2))
+thesis_title = "Compression-Reconstruction Co-Design for Urban Mobility Trajectories"
+doctoral_record = next(entry for entry in author["education"] if entry["degree"] == "PhD")
 
 section("Education")
 degree_names = {"PhD": "Ph.D. candidate", "MS": "M.S.", "BS": "B.S."}
@@ -148,9 +122,35 @@ for entry in author["education"]:
     detail = degree_names.get(entry["degree"], entry["degree"])
     if entry.get("summary"):
         detail += ", " + entry["summary"]
-    story.append(KeepTogether([
-        row(text(institution), date_range(entry)), p(text(detail), "detail"),
-    ]))
+    pieces = [row(text(institution), date_range(entry)), p(text(detail), "detail")]
+    if entry["degree"] == "PhD":
+        pieces.append(p(f'<b>Doctoral thesis:</b> <i>{text(thesis_title)}</i> (in progress).', "detail"))
+    story.append(KeepTogether(pieces))
+    story.append(Spacer(1, 2))
+
+section("Research Experience")
+story.extend([
+    row("Doctoral Research, KAIST", date_range(doctoral_record)),
+    p("Research on trajectory observation-reconstruction co-design, with published studies "
+      "in trajectory modeling and road-network representation learning.", "detail"),
+])
+papers = resume["cv_publications"]
+for research in resume["cv_research"]:
+    pieces = [p(text(research["title"]), "topic")]
+    for item in research["items"]:
+        number = item["reference"]
+        doi = papers[number - 1]["doi"]
+        pieces.append(p(f'- <b>{text(item["label"])}.</b> {text(item["text"])} '
+            f'<link href="https://doi.org/{doi}">[{number}]</link>', "bullet"))
+    story.append(KeepTogether(pieces))
+    story.append(Spacer(1, 1))
+
+section("Current Research Projects")
+for project in resume["projects"]:
+    title = f'<link href="https://lyh360121.github.io{project["url"]}">{text(project["title"])}</link>'
+    pieces = [row(title, text(project["status"]), "status")]
+    pieces.extend(p("- " + text(bullet), "bullet") for bullet in project["bullets"])
+    story.append(KeepTogether(pieces))
     story.append(Spacer(1, 2))
 
 story.append(PageBreak())
@@ -167,6 +167,12 @@ for group in ("Journal Articles", "Conference Papers"):
         citation += f'{text(paper["detail"])}, {paper["year"]}.'
         story.append(p(citation, "citation"))
 
+section("Professional Experience")
+for entry in author["experience"]:
+    pieces = [row(text(entry["role"]), date_range(entry)), p(text(entry["org"]), "detail")]
+    story.append(KeepTogether(pieces))
+    story.append(Spacer(1, 2))
+
 section("Technical Skills")
 for skill in resume["skills"]:
     story.append(p(f'<b>{text(skill["label"])}:</b> {text(skill["text"])}', "detail"))
@@ -175,9 +181,9 @@ story.append(p("; ".join(f'<b>{text(entry["name"])}</b>: {text(entry["label"])}'
     for entry in author["languages"])))
 
 def decoration(canvas, doc):
-    canvas.setTitle("Yonghui Liu - Curriculum Vitae")
+    canvas.setTitle("Yonghui Liu - Academic Curriculum Vitae")
     canvas.setAuthor(name)
-    canvas.setSubject("Machine learning research, projects, and publications")
+    canvas.setSubject("Education, doctoral research, publications, and professional experience")
     canvas.setFillColor(GRAY)
     canvas.setFont(normal, 9)
     canvas.drawString(56, 26, "Yonghui Liu | Curriculum Vitae | October 2026")
@@ -186,9 +192,9 @@ def decoration(canvas, doc):
         canvas.setFont(bold, 11)
         canvas.drawString(56, A4[1]-30, name)
         canvas.setFont(normal, 10)
-        canvas.drawRightString(A4[0]-56, A4[1]-30, "Publications and Skills")
+        canvas.drawRightString(A4[0]-56, A4[1]-30, "Academic Curriculum Vitae")
 
 doc = SimpleDocTemplate(str(out), pagesize=A4, leftMargin=50, rightMargin=50,
-    topMargin=39, bottomMargin=41, title="Yonghui Liu - Curriculum Vitae", author=name)
+    topMargin=39, bottomMargin=41, title="Yonghui Liu - Academic Curriculum Vitae", author=name)
 doc.build(story, onFirstPage=decoration, onLaterPages=decoration)
 print(out)
