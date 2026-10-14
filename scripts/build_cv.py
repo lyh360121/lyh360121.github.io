@@ -29,6 +29,7 @@ out = args.output.resolve()
 out.parent.mkdir(parents=True, exist_ok=True)
 resume = yaml.safe_load((ROOT / "data/resume.yaml").read_text(encoding="utf-8"))
 author = yaml.safe_load((ROOT / "data/authors/me.yaml").read_text(encoding="utf-8"))
+funded_projects = yaml.safe_load((ROOT / "data/research_projects.yaml").read_text(encoding="utf-8"))["projects"]
 
 normal, bold, italic, bold_italic = register_document_fonts()
 
@@ -137,7 +138,24 @@ for research in resume["cv_research"]:
     story.append(KeepTogether(pieces))
     story.append(Spacer(1, 1))
 
-section("Current Research Projects")
+if funded_projects:
+    section("Selected Funded Research Projects")
+    for project in funded_projects:
+        title = text(project.get("official_title") or project["title"])
+        if project.get("public_url"):
+            title = f'<link href="{escape(project["public_url"])}">{title}</link>'
+        metadata = text(project["role"])
+        if project.get("funder_short"):
+            metadata += f' | Funder: {text(project["funder_short"])}'
+        pieces = [
+            p(title, "entry"),
+            p(metadata, "detail"),
+            p(f'<b>Project scope:</b> {text(project["scope"])}', "detail"),
+        ]
+        story.append(KeepTogether(pieces))
+        story.append(Spacer(1, 2))
+
+section("Independent Research Prototypes")
 for project in resume["projects"]:
     title = f'<link href="https://lyh360121.github.io{project["url"]}">{text(project["title"])}</link>'
     pieces = [row(title, text(project["status"]), "status")]
@@ -174,14 +192,21 @@ for entry in presentations:
     pieces.append(Spacer(1, 4))
     presentation_blocks.append(pieces)
 
+conclusion = []
 if presentations:
-    section("Selected Conference Presentations")
+    opening_blocks = presentation_blocks[:-2]
+    heading = []
+    section("Selected Conference Presentations", heading)
     # Keep the final presentations with the concluding background sections.
     # This prevents a short last page containing only skills and languages.
-    for pieces in presentation_blocks[:-2]:
+    # Keep the section heading with its first complete presentation as well.
+    if opening_blocks:
+        story.append(KeepTogether(heading + opening_blocks[0]))
+    else:
+        conclusion.extend(heading)
+    for pieces in opening_blocks[1:]:
         story.append(KeepTogether(pieces))
 
-conclusion = []
 for pieces in presentation_blocks[-2:]:
     conclusion.extend(pieces)
 

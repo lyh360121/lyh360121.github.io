@@ -1,0 +1,63 @@
+# Participation in the pictured KAIST project records was confirmed by the author.
+# Scope describes the funded team's work, not personal ownership of every module.
+# Annual records are grouped by project; record_period is not a personal appointment
+# or the full grant duration. The lab website provides the public project details.
+projects:
+  - id: physical_ai
+    title: Physical AI for Mixed-Autonomy Traffic
+    official_title: Development of a Physical AI and Infrastructure-Centric AV Control Framework for Mixed-Autonomy Traffic Environments
+    funder: National Research Foundation of Korea
+    funder_short: NRF
+    institution: KAIST
+    pi: Prof. Inhi Kim
+    role: Research Team Member
+    record_period: "2026"
+    public_url: https://www.inhi.kim/projects/1445f228-be90-8394-ade4-01089d9e1097
+    scope: "Infrastructure-guided AV coordination, mixed-traffic modeling, and digital-twin scenario validation."
+  - id: virtual_testing
+    title: Autonomous-Driving Virtual Test Environment
+    official_title: Development of Virtual Environment and Demonstration Technology for Automated Driving based on Metaverse
+    funder: Ministry of Land, Infrastructure and Transport of Korea
+    funder_short: MOLIT
+    institution: KAIST
+    pi: Prof. Inhi Kim
+    role: Research Team Member
+    record_period: "2024-2026"
+    public_url: https://www.inhi.kim/projects/7815f228-be90-83bd-a202-0149c27d0ea7
+    scope: "Dynamic-object behavior models and data-linked virtual environments for automated-driving validation."
+  - id: digital_twin
+    title: Road Traffic Digital Twin
+    official_title: Road Traffic Digital Twin Development Using Autonomous Driving Lv.4/4+ Big Data
+    funder: Ministry of Land, Infrastructure and Transport of Korea
+    funder_short: MOLIT
+    institution: KAIST
+    pi: Prof. Inhi Kim
+    role: Research Team Member
+    record_period: "2024-2025"
+    public_url: https://www.inhi.kim/projects/9e45f228-be90-829a-8c84-0151c577de42
+    scope: "Deep-learning traffic analysis and prediction, mobility-data fusion, and network-level simulation."
+  - id: shared_mobility
+    title: Shared Mobility and Mass Transit Operations
+    official_title: Shared Mobility-Mass Transit Operational Plan for Preparing the Next Pandemic
+    funder: National Research Foundation of Korea
+    funder_short: NRF
+    institution: KAIST
+    pi: Prof. Inhi Kim
+    role: Research Team Member
+    record_period: "2024-2025"
+    public_url: https://www.inhi.kim/projects/74d5f228-be90-82d9-9324-0170998b5373
+    scope: "Shared-mobility demand forecasting and operational planning across shared transport and mass transit."
+  # Descriptive title from the visible KAIST task record; the official title is
+  # truncated in the screenshot and is not listed on the supplied lab website.
+  - id: agent_planning
+    title: Agent-Based Mobility Planning
+    official_title: null
+    funder: null
+    funder_short: null
+    institution: KAIST
+    pi: Prof. Inhi Kim
+    role: Research Team Member
+    record_period: "2026"
+    public_url: null
+    publish_on_website: false
+    scope: "Research on evolving agent-based mobility planners."

@@ -2,6 +2,7 @@
 {{ $block := .wcBlock }}
 {{ $author := index site.Data.authors ($block.content.username | default "me") }}
 {{ $resume := site.Data.resume }}
+{{ $funded_projects := site.Data.research_projects.projects }}
 {{ $email := "" }}
 {{ range $author.links }}
   {{ if hasPrefix .url "mailto:" }}{{ $email = .url }}{{ end }}
@@ -33,7 +34,8 @@
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#research-contributions">Research contributions</a>
-    <a href="#current-projects">Current projects</a>
+    {{ with $funded_projects }}<a href="#funded-projects">Funded projects</a>{{ end }}
+    <a href="#current-projects">Independent prototypes</a>
     <a href="#selected-publications">Selected publications</a>
     {{ with $resume.conference_presentations }}<a href="#conference-presentations">Conference presentations</a>{{ end }}
     <a href="#technical-skills">Technical skills</a>
@@ -80,8 +82,29 @@
     </div>
   </section>
 
+  {{ with $funded_projects }}
+  <section id="funded-projects" class="cv-section" aria-labelledby="cv-funded-projects-heading">
+    <h2 id="cv-funded-projects-heading">Selected Funded Research Projects</h2>
+    <div class="cv-card-grid">
+      {{ range . }}
+      {{ if ne .publish_on_website false }}
+      {{ $project := . }}
+      <article class="cv-card">
+        <span class="research-status">{{ .role }}</span>
+        <h3>{{ .title }}</h3>
+        <p class="cv-publication-meta">{{ .institution }} · PI: {{ .pi }}</p>
+        <p class="cv-publication-meta">Funder: {{ .funder }} ({{ .funder_short }})</p>
+        <p class="cv-card-copy"><strong>Project scope:</strong> {{ .scope }}</p>
+        {{ with .public_url }}<p><a class="cv-evidence research-text-link" href="{{ . | safeURL }}">Lab project details <span aria-hidden="true">→</span><span class="research-sr-only">: {{ $project.title }}</span></a></p>{{ end }}
+      </article>
+      {{ end }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
   <section id="current-projects" class="cv-section" aria-labelledby="cv-projects-heading">
-    <h2 id="cv-projects-heading">Current Projects</h2>
+    <h2 id="cv-projects-heading">Independent Research Prototypes</h2>
     <div class="cv-card-grid">
       {{ range $resume.projects }}
       {{ $project := . }}

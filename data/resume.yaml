@@ -10,11 +10,11 @@ industry:
       - "Developed language- and graph-based road representations and label alignment for cross-city transfer and learning with limited labels."
   projects:
     - title: "Generative Traffic Simulation"
-      status: "Ongoing research"
+      status: "Independent research"
       url: /projects/route-conditioned-traffic-simulation/
       text: "Developing controllable traffic generation with a pretrained motion model and learned route conditioning."
     - title: "Adaptive Sensing Web (ATSW)"
-      status: "Research prototype"
+      status: "Independent prototype"
       url: /projects/autonomous-traffic-sensor-web/
       text: "Built GPS replay, adaptive reporting, and receiver-state estimation with Python/FastAPI and React/TypeScript."
   skills:

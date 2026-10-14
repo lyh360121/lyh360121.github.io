@@ -1,6 +1,6 @@
 """Generate the one-page industry resume; academic CV uses build_cv.py.
 
-Usage: python scripts/build_resume.py --phone YOUR_PHONE
+Usage: python scripts/build_resume.py --profile applied_ml --phone YOUR_PHONE
 Dependencies: reportlab, PyYAML. The resume is a local application document.
 """
 from __future__ import annotations
@@ -24,15 +24,25 @@ from pdf_style import register_document_fonts
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--output', type=Path, default=ROOT / 'output/pdf/Yonghui_Liu_Resume.pdf')
+parser.add_argument('--profile', choices=['general', 'applied_ml', 'motion_simulation', 'research_engineer'],
+    default='applied_ml', help='Select role-specific content; general preserves the website summary.')
+parser.add_argument('--output', type=Path, help='Override the profile-specific output path.')
 parser.add_argument('--phone', default='')
 parser.add_argument('--photo', type=Path, default=ROOT / 'assets/media/authors/me.jpg')
 args = parser.parse_args()
-out = args.output.resolve()
-out.parent.mkdir(parents=True, exist_ok=True)
 author = yaml.safe_load((ROOT / 'data/authors/me.yaml').read_text(encoding='utf-8'))
 resume_data = yaml.safe_load((ROOT / 'data/resume.yaml').read_text(encoding='utf-8'))
-content = resume_data['industry']
+project_data = yaml.safe_load((ROOT / 'data/research_projects.yaml').read_text(encoding='utf-8'))
+funded_projects = {project['id']: project for project in project_data['projects']}
+if args.profile == 'general':
+    content = resume_data['industry']
+    filename = 'Yonghui_Liu_Resume_General.pdf'
+else:
+    profiles = yaml.safe_load((ROOT / 'data/resume_profiles.yaml').read_text(encoding='utf-8'))
+    content = profiles[args.profile]
+    filename = content['output_filename']
+out = (args.output or ROOT / 'output/pdf' / filename).resolve()
+out.parent.mkdir(parents=True, exist_ok=True)
 normal, bold, italic, bold_italic = register_document_fonts()
 
 INK = colors.HexColor('#202932')
@@ -170,11 +180,24 @@ for entry in author['experience']:
         pieces = [row(text(entry['role']), date_range(entry)), p(text(entry['org']))]
     story.extend([KeepTogether(pieces), Spacer(1, 3)])
 
-section('Projects')
-for project in content['projects']:
-    title = f'<link href="https://lyh360121.github.io{project["url"]}">{text(project["title"])}</link>'
+section('Selected Research Projects')
+for reference in content.get('funded_project_refs', []):
+    project = funded_projects[reference]
+    title = f'<link href="{escape(project["public_url"])}">{text(project["title"])}</link>'
+    description = project['scope']
+    scope = f'Research contributor to a project on {description[0].lower()}{description[1:]}'
     story.extend([
-        KeepTogether([row(title, text(project['status'])), p('- ' + text(project['text']), 'bullet')]),
+        KeepTogether([row(title, text(f'{project["funder_short"]}-funded')),
+            p('- ' + text(scope), 'bullet')]),
+        Spacer(1, 3),
+    ])
+for project in content['projects']:
+    url = project['url'] if project['url'].startswith('https://') else f'https://lyh360121.github.io{project["url"]}'
+    title = f'<link href="{escape(url)}">{text(project["title"])}</link>'
+    descriptions = project.get('bullets') or [project['text']]
+    story.extend([
+        KeepTogether([row(title, text(project['status']))]
+            + [p('- ' + text(description), 'bullet') for description in descriptions]),
         Spacer(1, 3),
     ])
 
@@ -201,7 +224,7 @@ for number, reference in enumerate(content['publication_refs'], 1):
 pending = out.with_suffix('.building.pdf')
 doc = SimpleDocTemplate(str(pending), pagesize=A4, leftMargin=50, rightMargin=50,
     topMargin=42, bottomMargin=42, title=f'{name} - Resume', author=name,
-    subject='Industry resume: machine learning research and software engineering')
+    subject=f'Industry resume: {content["headline"]}')
 doc.build(story)
 if doc.page != 1:
     pending.unlink()

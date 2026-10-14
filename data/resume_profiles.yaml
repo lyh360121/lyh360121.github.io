@@ -1,0 +1,77 @@
+# Local application documents. These profiles do not replace the website's academic CV.
+# Publications use one-based references into resume.yaml/cv_publications.
+# Ongoing work is distinguished from results in published experiments.
+applied_ml:
+  output_filename: Yonghui_Liu_Resume.pdf
+  headline: "Machine Learning & Applied Research"
+  research:
+    title: "Doctoral Research | KAIST"
+    bullets:
+      - "Developed ProChunkFormer for sparse GPS reconstruction. On Porto taxi data at 240-second sampling, reduced runtime by 20.7% versus an autoregressive Transformer."
+      - "Developed graph representations for cross-city transfer and LLM-guided cross-taxonomy alignment; with 1% human-labeled data, achieved 51.3% alignment accuracy versus 40.0% for direct supervised training."
+  funded_project_refs: [digital_twin, physical_ai]
+  projects:
+    - title: "Generative Traffic Simulation"
+      status: "Independent research"
+      url: /projects/route-conditioned-traffic-simulation/
+      text: "Developing route-conditioned traffic generation on frozen SMART; evaluation is ongoing."
+  skills:
+    - label: Programming Languages
+      text: "Python, C, JavaScript, TypeScript, MATLAB."
+    - label: Machine Learning
+      text: "PyTorch, Transformers, Graph Neural Networks."
+    - label: Learning Methods
+      text: "Representation Learning, Transfer Learning, Weak Supervision."
+    - label: Model Development
+      text: "Data Preprocessing, Model Training, Ablation Studies, Model Evaluation."
+  publication_refs: [2, 5]
+
+motion_simulation:
+  output_filename: Yonghui_Liu_Resume_Motion_Simulation.pdf
+  headline: "Motion Prediction & Traffic Simulation"
+  research:
+    title: "Doctoral Research | KAIST"
+    bullets:
+      - "Developed ProChunkFormer for sparse GPS reconstruction. On Porto taxi data at 240-second sampling, reduced road-network MAE by 25.1% and runtime by 20.7% versus an autoregressive Transformer."
+      - "Designed SDA to quantify history, current-state, and goal contributions to LSTM/Transformer forecasting on Porto taxi and ETH pedestrian data."
+  funded_project_refs: [virtual_testing, digital_twin]
+  projects:
+    - title: "Route-Conditioned Traffic Simulation"
+      status: "Independent research"
+      url: /projects/route-conditioned-traffic-simulation/
+      text: "Developing path-encoding/FiLM conditioning on frozen SMART, with recorded-scene data adapters and closed-loop evaluation."
+  skills:
+    - label: Programming Languages
+      text: "Python, C, JavaScript, TypeScript, MATLAB."
+    - label: Modeling
+      text: "PyTorch, Transformers, Sequence Modeling, Conditional Generation."
+    - label: Evaluation
+      text: "Ablation Studies, Error Analysis, Closed-Loop Simulation."
+    - label: Engineering
+      text: "Data Preprocessing, Reproducible Experiment Pipelines."
+  publication_refs: [1, 2]
+
+research_engineer:
+  output_filename: Yonghui_Liu_Resume_Research_Engineer.pdf
+  headline: "Research Engineer | Model Development & Evaluation"
+  research:
+    title: "Doctoral Research | KAIST"
+    bullets:
+      - "Implemented ProChunkFormer for sparse GPS reconstruction; on Porto taxi data at 240-second sampling, reduced runtime by 20.7% versus an autoregressive Transformer."
+      - "Designed controlled-input experiments for LSTM/Transformer forecasting to measure history, state, and goal contributions on vehicle and pedestrian data."
+  funded_project_refs: [virtual_testing, digital_twin]
+  projects:
+    - title: "Adaptive Sensing Web (ATSW)"
+      status: "Independent prototype"
+      url: /projects/autonomous-traffic-sensor-web/
+      text: "Built a FastAPI and React/TypeScript workspace with GPS replay, adaptive reporting, validated CSV import, run logs, and JSON export."
+  skills:
+    - label: Programming Languages
+      text: "Python, C, JavaScript, TypeScript, MATLAB."
+    - label: Frameworks
+      text: "PyTorch, FastAPI, React."
+    - label: ML Workflows
+      text: "Dataset Validation, Training, Checkpointing, Model Evaluation."
+    - label: Research Systems
+      text: "API Development, Run Logging, Replay and Experiment Tools."
+  publication_refs: [2, 1]
