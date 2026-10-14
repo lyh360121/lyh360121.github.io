@@ -47,17 +47,16 @@ projects:
     record_period: "2024-2025"
     public_url: https://www.inhi.kim/projects/74d5f228-be90-82d9-9324-0170998b5373
     scope: "Shared-mobility demand forecasting and operational planning across shared transport and mass transit."
-  # Descriptive title from the visible KAIST task record; the official title is
-  # truncated in the screenshot and is not listed on the supplied lab website.
+  # Complete title verified in the author's KAIST project inquiry, 2026-10-14.
+  # No funding agency or public details page has been confirmed for this entry.
   - id: agent_planning
-    title: Agent-Based Mobility Planning
-    official_title: null
+    title: LLM-Based Agent Mobility Planning
+    official_title: Development of evolving agent-based mobility planners in autonomous driving era using LLM
     funder: null
     funder_short: null
     institution: KAIST
     pi: Prof. Inhi Kim
     role: Research Team Member
-    record_period: "2026"
+    record_period: "2026-07-01 - 2026-10-31"
     public_url: null
-    publish_on_website: false
-    scope: "Research on evolving agent-based mobility planners."
+    scope: "Using large language models for evolving agent-based mobility planners in autonomous-driving applications."

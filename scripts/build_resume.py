@@ -183,11 +183,15 @@ for entry in author['experience']:
 section('Selected Research Projects')
 for reference in content.get('funded_project_refs', []):
     project = funded_projects[reference]
-    title = f'<link href="{escape(project["public_url"])}">{text(project["title"])}</link>'
+    title = text(project['title'])
+    if project.get('public_url'):
+        title = f'<link href="{escape(project["public_url"])}">{title}</link>'
+    status = (f'{project["funder_short"]}-funded' if project.get('funder_short')
+        else f'{project["institution"]} project')
     description = project['scope']
     scope = f'Research contributor to a project on {description[0].lower()}{description[1:]}'
     story.extend([
-        KeepTogether([row(title, text(f'{project["funder_short"]}-funded')),
+        KeepTogether([row(title, text(status)),
             p('- ' + text(scope), 'bullet')]),
         Spacer(1, 3),
     ])

@@ -93,7 +93,7 @@
         <span class="research-status">{{ .role }}</span>
         <h3>{{ .title }}</h3>
         <p class="cv-publication-meta">{{ .institution }} · PI: {{ .pi }}</p>
-        <p class="cv-publication-meta">Funder: {{ .funder }} ({{ .funder_short }})</p>
+        {{ with .funder }}<p class="cv-publication-meta">Funder: {{ . }}{{ with $project.funder_short }} ({{ . }}){{ end }}</p>{{ end }}
         <p class="cv-card-copy"><strong>Project scope:</strong> {{ .scope }}</p>
         {{ with .public_url }}<p><a class="cv-evidence research-text-link" href="{{ . | safeURL }}">Lab project details <span aria-hidden="true">→</span><span class="research-sr-only">: {{ $project.title }}</span></a></p>{{ end }}
       </article>

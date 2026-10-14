@@ -9,7 +9,7 @@ applied_ml:
     bullets:
       - "Developed ProChunkFormer for sparse GPS reconstruction. On Porto taxi data at 240-second sampling, reduced runtime by 20.7% versus an autoregressive Transformer."
       - "Developed graph representations for cross-city transfer and LLM-guided cross-taxonomy alignment; with 1% human-labeled data, achieved 51.3% alignment accuracy versus 40.0% for direct supervised training."
-  funded_project_refs: [digital_twin, physical_ai]
+  funded_project_refs: [agent_planning, digital_twin]
   projects:
     - title: "Generative Traffic Simulation"
       status: "Independent research"
